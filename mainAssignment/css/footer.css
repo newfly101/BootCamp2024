@@ -23,10 +23,23 @@ footer {
     align-content: center;
     margin: 0 10px 0 10px;
     cursor: pointer;
-
 }
+
+@keyframes icons-move {
+    0% {
+        transform: translateY(10px);
+    } 50% {
+        transform: translateY(0px);
+    } 100% {
+        transform: translateY(10px);
+    }
+}
+
 .footer-icons__img {
     width: 30px;
+}
+.footer-icons:hover footer-icons__img {
+    animation: 2s icons-move;
 }
 
 .footer-icons__desc {
