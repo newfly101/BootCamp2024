@@ -9,17 +9,15 @@
     <style>
         main {
             width: 200px;
-            height: 200px;
+            height: 1200px;
             border: 1px solid red;
-            position: relative;
-
         }
         div {
             width: 50px;
             height: 50px;
             background-color: red;
-            position: absolute;
-            /*body 기준으로 적용된다.*/
+            position: fixed;
+            /*보여지는 화면 기준으로 위치하게 된다.*/
             top: 100px;
             left: 100px;
         }
@@ -27,7 +25,7 @@
 </head>
 <body>
     <main>
-        <div></div>
+        <div>글쓰기</div>
     </main>
 </body>
 </html>
