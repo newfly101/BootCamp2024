@@ -4,6 +4,11 @@
     padding: 0 10px 0 10px;
 }
 
+.info-bar__time {
+    font-size: 12px;
+    font-weight: bold;
+}
+
 .info-bar__icons img {
     width: 15px;
     height: 15px;
