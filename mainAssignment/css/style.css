@@ -2,3 +2,24 @@
 @import "header.css";
 @import "main.css";
 @import "footer.css";
+
+.media-info-msg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    opacity: 0;
+}
+
+@media screen and (min-width: 300px) {
+    .media-info-msg {
+        opacity: 1;
+        background-color: red;
+        width: 100vw;
+        height: 100vh;
+    }
+}
