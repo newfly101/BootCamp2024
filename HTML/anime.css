@@ -8,6 +8,13 @@ div {
     height: 100px;
     background-color: rgb(98, 220, 147);
 }
+.main-screen {
+    background-color: white;
+}
+.alert {
+    opacity: 0;
+    /*불투명도 1 : 보여짐 / 0 : 안보여짐*/
+}
 .logo {
     width: 200px;
     height: 200px;
@@ -48,5 +55,14 @@ div > button {
         transform: translate(50px) rotate(180deg);
     } 100% {
         transform: translate(50px, 50px) scale(3);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .main-screen {
+        background-color: orange;
+    }
+    .alert {
+        opacity: 1;
     }
 }
