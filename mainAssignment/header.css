@@ -1,3 +1,7 @@
+header {
+    border-bottom: 1px solid #ededef;
+}
+
 .info-bar {
     display: flex;
     justify-content: space-between;
