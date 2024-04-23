@@ -17,8 +17,8 @@ div {
     display: none;
     position: fixed;
     background-color: red;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     /*opacity: 0;*/
     /*불투명도 1 : 보여짐 / 0 : 안보여짐*/
 }
