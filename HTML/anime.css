@@ -12,7 +12,14 @@ div {
     background-color: white;
 }
 .alert {
-    opacity: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    position: fixed;
+    background-color: red;
+    top: 0px;
+    left: 0px;
+    /*opacity: 0;*/
     /*불투명도 1 : 보여짐 / 0 : 안보여짐*/
 }
 .logo {
@@ -26,6 +33,8 @@ div {
     border: 1px solid black;
     transition: all 0.3s ease-in-out;
     animation: 1s awesome infinite alternate;
+    justify-content: center;
+    align-content: center;
 }
 .box:hover {
     /*transform: scale(2);*/
@@ -63,6 +72,7 @@ div > button {
         background-color: orange;
     }
     .alert {
-        opacity: 1;
+        /*opacity: 1;*/
+        display: block;
     }
 }
