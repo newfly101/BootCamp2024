@@ -1,6 +1,14 @@
+:root {
+    --main-color: rgb(147, 20, 147);
+}
+
 div {
     width: 100px;
     height: 100px;
     background-color: rgb(98, 220, 147);
+}
 
+/*변수로 컬러의 값을 지정하는 경우*/
+div > button {
+    background-color: var(--main-color);
 }
