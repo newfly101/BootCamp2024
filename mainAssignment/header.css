@@ -3,3 +3,8 @@
     justify-content: space-between;
     padding: 0 10px 0 10px;
 }
+
+.info-bar__icons img {
+    width: 20px;
+    height: 20px;
+}
