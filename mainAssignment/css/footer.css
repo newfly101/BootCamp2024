@@ -38,7 +38,7 @@ footer {
 .footer-icons__img {
     width: 30px;
 }
-.footer-icons:hover footer-icons__img {
+.footer-icons:hover {
     animation: 2s icons-move;
 }
 
