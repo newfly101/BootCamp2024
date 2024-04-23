@@ -1,0 +1,29 @@
+.item-list {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.item-list__img {
+    width: 150px;
+    height: 150px;
+    border: 1px solid rgba(0,0,0,0.1);
+    /*rgba에서 마지막 옵션은 투명도를 주기 위함이다.*/
+    border-radius: 12px;
+}
+
+.item-list__info {
+
+}
+
+.item-list__info-title {
+
+}
+
+.item-list__info-meta {
+
+}
+
+.item-list__info-price {
+
+}
