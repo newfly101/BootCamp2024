@@ -48,3 +48,15 @@ main {
 .item-list__info-price {
     font-weight: bold;
 }
+
+.write-btn {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background-color: rgb(255,110,0);
+    padding: 10px 15px 10px 15px;
+    border-radius: 25px;
+    color: white;
+    font-size: 15px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
