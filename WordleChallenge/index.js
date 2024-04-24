@@ -32,9 +32,14 @@ function appStart() {
             for (let j = 0; j < wordleResult.length; j++) {
                 if (result[i] === wordleResult[i]) {
                     console.log(result[i]+"는 정확하게 일치합니다.");
+                    const correctBlock = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
+                    const wordBlock = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
+                    correctBlock.style.backgroundColor = 'green';
                     break;
                 }else if (result[i] === wordleResult[j]) {
                     console.log(result[i]+"는 정답 안에 있습니다.");
+                    const correctBlock = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
+                    correctBlock.style.backgroundColor = 'yellow';
                     break;
                 }
             }
