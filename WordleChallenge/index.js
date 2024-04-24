@@ -24,6 +24,21 @@ function appStart() {
             result += strings.innerText.toString();
         }
         console.log(result);
+        handleCheckCorrect(result);
+    }
+
+    function handleCheckCorrect(result) {
+        for (let i = 0; i < result.length; i++) {
+            for (let j = 0; j < wordleResult.length; j++) {
+                if (result[i] === wordleResult[i]) {
+                    console.log(result[i]+"는 정확하게 일치합니다.");
+                    break;
+                }else if (result[i] === wordleResult[j]) {
+                    console.log(result[i]+"는 정답 안에 있습니다.");
+                    break;
+                }
+            }
+        }
     }
 
     const handleKeyDown = (event) => {
@@ -38,11 +53,9 @@ function appStart() {
             }
         } else if (keyCode === 13 && index === 5) {
             // key = Enter
-            // init 해주기 값
             handleEnterKey(event);
             attempts++;
             index = 0;
-
         } else if (keyCode === 8) {
             // key = Backspace
             if (index > 0) {
