@@ -11,7 +11,13 @@
 let index = 0;
 let attempts = 0;
 
+const wordleResult = 'MONEY';
+
 function appStart() {
+    const hadleEnterKey = (event) => {
+        // 정답 확인
+    }
+
     const handleKeyDown = (event) => {
         const key = event.key;
         // event.key.toUpperCase(); 사용해도 대문자로 사용할 수 있다.
@@ -22,13 +28,11 @@ function appStart() {
                 thisBlock.innerText = String.fromCharCode(keyCode);
                 index++;
             }
-            // const thisBlock = document.querySelector(".board-block[data-index='00']");
-            // console.log(event);
         } else if (keyCode === 13) {
             // key = Enter
-            const thisBlock = document.querySelector(".board-block[data-index='00']");
-            thisBlock.innerText = key;
+            // init 해주기 값
             attempts++;
+            index = 0;
         } else if (keyCode === 8) {
             // key = Backspace
             if (index > 0) {
