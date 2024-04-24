@@ -8,5 +8,16 @@
     (선택) 키보드 클릭으로도 입력
  **/
 
+function appStart() {
+    const handleKeyDown = (event) => {
+        const key = event.key;
+        const keyCode = event.keyCode;
+    }
+    window.addEventListener("keydown",handleKeyDown);
+}
+
+// 앱 시작
+appStart();
+
 
 
