@@ -36,12 +36,13 @@ function appStart() {
                 thisBlock.innerText = key;
                 index++;
             }
-        } else if (keyCode === 13) {
+        } else if (keyCode === 13 && index === 5) {
             // key = Enter
             // init 해주기 값
             handleEnterKey(event);
             attempts++;
             index = 0;
+
         } else if (keyCode === 8) {
             // key = Backspace
             if (index > 0) {
