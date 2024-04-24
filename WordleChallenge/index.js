@@ -14,23 +14,32 @@ let attempts = 0;
 const wordleResult = 'MONEY';
 
 function appStart() {
-    const hadleEnterKey = (event) => {
+    const handleEnterKey = (event) => {
         // 정답 확인
+        console.log(event);
+        let result = '';
+        for (let i = 0 ; i < 5; i++) {
+            let strings = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
+            // console.log(strings.innerText);
+            result += strings.innerText.toString();
+        }
+        console.log(result);
     }
 
     const handleKeyDown = (event) => {
-        const key = event.key;
-        // event.key.toUpperCase(); 사용해도 대문자로 사용할 수 있다.
+        const key = event.key.toUpperCase();
         const keyCode = event.keyCode;
+        const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index}']`);
+
         if (keyCode >= 65 && keyCode <= 90) {
-            if (index < 5) {
-                const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index}']`);
-                thisBlock.innerText = String.fromCharCode(keyCode);
+            if (index <= 4) {
+                thisBlock.innerText = key;
                 index++;
             }
         } else if (keyCode === 13) {
             // key = Enter
             // init 해주기 값
+            handleEnterKey(event);
             attempts++;
             index = 0;
         } else if (keyCode === 8) {
