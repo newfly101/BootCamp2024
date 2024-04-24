@@ -11,6 +11,7 @@
 function appStart() {
     const handleKeyDown = (event) => {
         const key = event.key;
+        // event.key.toUpperCase(); 사용해도 대문자로 사용할 수 있다.
         const keyCode = event.keyCode;
         if (keyCode >= 65 && keyCode <= 90) {
             const thisBlock = document.querySelector(".board-block[data-index='00']");
