@@ -12,6 +12,9 @@ function appStart() {
     const handleKeyDown = (event) => {
         const key = event.key;
         const keyCode = event.keyCode;
+        const thisBlock = document.querySelector(".board-block[data-index='00']");
+        thisBlock.innerText = key;
+        console.log(event);
     }
     window.addEventListener("keydown",handleKeyDown);
 }
