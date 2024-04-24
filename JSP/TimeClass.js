@@ -15,8 +15,8 @@ let thisTimeS = new Date().getSeconds();
 
 function setTime() {
     const time = new Date();
-    const timeMin = time.getMinutes();
-    const timeSec = time.getSeconds();
+    const timeMin = time.getMinutes().toString().padStart(2,'0');
+    const timeSec = time.getSeconds().toString().padStart(2,'0');
     const timeH1 = document.querySelector(".time");
     timeH1.innerText = `${timeMin}:${timeSec}`;
 }
