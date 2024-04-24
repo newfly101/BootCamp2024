@@ -9,6 +9,7 @@ function sayHello() {
 setTimeout(sayHello, 1000);
 
 
+
 let thisTime = new Date().getDate();
 let thisTimeM = new Date().getMinutes();
 let thisTimeS = new Date().getSeconds();
@@ -22,7 +23,20 @@ function setTime() {
 }
 
 // 시간의 앞에 0을 넣는 경우 다음과 같이 할 수 있다.
-// 유용한 함수 padStart();
+// 유용한 함수 padStart(); // 문자열만 지원함
 console.log('3'.padStart(2,'0'));
 
 setInterval(setTime, 1000);
+
+const startTime = new Date();
+
+function getTime() {
+    const thisTime = new Date();
+    const timer = new Date(thisTime - startTime);
+    const timeMin = timer.getMinutes().toString().padStart(2,'0');
+    const timeSec = timer.getSeconds().toString().padStart(2,'0');
+    const timeH2 = document.querySelector("#time2");
+    timeH2.innerText = `${timeMin}:${timeSec}`;
+}
+
+setInterval(getTime, 1000);
