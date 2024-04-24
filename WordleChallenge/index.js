@@ -12,9 +12,15 @@ function appStart() {
     const handleKeyDown = (event) => {
         const key = event.key;
         const keyCode = event.keyCode;
-        const thisBlock = document.querySelector(".board-block[data-index='00']");
-        thisBlock.innerText = key;
-        console.log(event);
+        if (keyCode >= 65 && keyCode <= 90) {
+            const thisBlock = document.querySelector(".board-block[data-index='00']");
+            thisBlock.innerText = String.fromCharCode(keyCode);
+            console.log(event);
+        } else if (keyCode === 13 || keyCode === 8) {
+            // key = Enter / Backspace
+            const thisBlock = document.querySelector(".board-block[data-index='00']");
+            thisBlock.innerText = key;
+        }
     }
     window.addEventListener("keydown",handleKeyDown);
 }
