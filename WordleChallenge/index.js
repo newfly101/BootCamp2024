@@ -20,10 +20,9 @@ function appStart() {
         let result = '';
         for (let i = 0 ; i < 5; i++) {
             let strings = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
-            // console.log(strings.innerText);
             result += strings.innerText.toString();
         }
-        console.log(result);
+        // console.log(result);
         handleCheckCorrect(result);
     }
 
