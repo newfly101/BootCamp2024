@@ -1,0 +1,53 @@
+footer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 150px;
+}
+.word-keyInput {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 5px;
+}
+
+.word-key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(226,230,234);
+    background-color: rgb(226,230,234);
+    width: 60px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: bold;
+}
+.word-key-enter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(226,230,234);
+    background-color: rgb(226,230,234);
+    width: 100px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.word-key-delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(226,230,234);
+    background-color: rgb(226,230,234);
+    width: 100px;
+    height: 80px;
+    border-radius: 10px;
+
+}
+.word-key-delete img {
+    width: 45px;
+}
