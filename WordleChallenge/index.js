@@ -8,19 +8,35 @@
     (선택) 키보드 클릭으로도 입력
  **/
 
+let index = 0;
+let attempts = 0;
+
 function appStart() {
     const handleKeyDown = (event) => {
         const key = event.key;
         // event.key.toUpperCase(); 사용해도 대문자로 사용할 수 있다.
         const keyCode = event.keyCode;
         if (keyCode >= 65 && keyCode <= 90) {
-            const thisBlock = document.querySelector(".board-block[data-index='00']");
-            thisBlock.innerText = String.fromCharCode(keyCode);
-            console.log(event);
-        } else if (keyCode === 13 || keyCode === 8) {
-            // key = Enter / Backspace
+            if (index < 5) {
+                const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index}']`);
+                thisBlock.innerText = String.fromCharCode(keyCode);
+                index++;
+            }
+            // const thisBlock = document.querySelector(".board-block[data-index='00']");
+            // console.log(event);
+        } else if (keyCode === 13) {
+            // key = Enter
             const thisBlock = document.querySelector(".board-block[data-index='00']");
             thisBlock.innerText = key;
+            attempts++;
+        } else if (keyCode === 8) {
+            // key = Backspace
+            if (index > 0) {
+                const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index-1}']`);
+                thisBlock.innerText = '';
+                index--;
+            }
+
         }
     }
     window.addEventListener("keydown",handleKeyDown);
