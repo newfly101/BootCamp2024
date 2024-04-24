@@ -33,14 +33,22 @@ function appStart() {
                 if (result[i] === wordleResult[i]) {
                     console.log(result[i]+"는 정확하게 일치합니다.");
                     const correctBlock = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
-                    const wordBlock = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
+                    const wordBlock = document.querySelector(`.word-key[data-key='${result[i]}']`);
                     correctBlock.style.backgroundColor = 'green';
-                    break;
+                    wordBlock.style.backgroundColor = 'green';
                 }else if (result[i] === wordleResult[j]) {
                     console.log(result[i]+"는 정답 안에 있습니다.");
                     const correctBlock = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
+                    const wordBlock = document.querySelector(`.word-key[data-key='${result[i]}']`);
                     correctBlock.style.backgroundColor = 'yellow';
-                    break;
+                    wordBlock.style.backgroundColor = 'yellow';
+                }
+                const correctBlock = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
+                const wordBlock = document.querySelector(`.word-key[data-key='${result[i]}']`);
+                if (correctBlock.style.backgroundColor !== 'yellow' && correctBlock.style.backgroundColor !== 'green') {
+                    correctBlock.style.backgroundColor = 'gray';
+                    wordBlock.style.backgroundColor = 'gray';
+
                 }
             }
         }
