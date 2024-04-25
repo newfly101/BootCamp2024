@@ -45,7 +45,7 @@ function appStart() {
                 inputBlock.style.background = "#6aaa64";
                 inputBlock.style.border = "4px solid #6aaa64";
                 wordBlock.style.background = "#6aaa64";
-                wordBlock.style.border = "4px solid #6aaa64";
+                wordBlock.style.borderColor = "#6aaa64";
                 totalResult[i] = inputText;
             } else if (wordleResult.includes(inputText)) {
                 // 정답 안에 단어 있을 시 color 색상 설정
@@ -53,7 +53,7 @@ function appStart() {
                     inputBlock.style.background = "#c9b458";
                     inputBlock.style.border = "4px solid #c9b458";
                     wordBlock.style.background = "#c9b458";
-                    wordBlock.style.border = "4px solid #c9b458";
+                    wordBlock.style.borderColor = "#c9b458";
                 } else {
                     inputBlock.style.background = "#c9b458";
                     inputBlock.style.border = "4px solid #c9b458";
@@ -63,10 +63,12 @@ function appStart() {
                 inputBlock.style.background = "#787c7e";
                 inputBlock.style.border = "4px solid #787c7e";
                 wordBlock.style.background = "#787c7e";
+                wordBlock.style.borderColor = "#787c7e";
             }
             wordBlock.style.color = "white";
             inputBlock.style.color = "white";
         }
+        // console.log(totalResult);
     }
 
     const handleKeyDown = (event) => {
