@@ -85,6 +85,17 @@ function appStart() {
 
     }
 
+    function makeBoardAnime(time) {
+        // 시간 만큼 증가하며 카드를 뒤집는 애니메이션
+        for (let i = 0; i < 5; i++) {
+            let inputBlock = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
+            inputBlock.style.animation = `${time}s mainBoard`;
+            inputBlock.style.transition = 'transform 0.1s';
+            time++;
+            // console.log(time);
+        }
+    }
+
 
     const handleEnterKey = () => {
         // 정답 확인
@@ -123,16 +134,8 @@ function appStart() {
             inputBlock.style.color = "white";
         }
         // console.log(totalResult);
+        makeBoardAnime(2);
         gameOver();
-
-        let count = 2;
-        for (let i = 0; i < 5; i++) {
-            let inputBlock = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
-            inputBlock.style.animation = `${count}s mainBoard`;
-            inputBlock.style.transition = 'transform 0.1s';
-            count+=1;
-            console.log(count);
-        }
     }
 
     const handleKeyDown = (event) => {
