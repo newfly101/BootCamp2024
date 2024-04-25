@@ -18,6 +18,7 @@
 }
 .menu-bar__menu img{
     width: 30px;
+    cursor: pointer;
 }
 .menu-bar__menu2 {
     width: 30px;
@@ -30,4 +31,5 @@
 .menu-bar__menu2 img{
     width: 30px;
     padding-left: 5px;
+    cursor: pointer;
 }
