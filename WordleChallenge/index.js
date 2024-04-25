@@ -25,8 +25,9 @@ function appStart() {
         const time = new Date(new Date() - thisTime);
         const timeMin = time.getMinutes().toString().padStart(2,'0');
         const timeSec = time.getSeconds().toString().padStart(2,'0');
+        const timeMilSec = time.getMilliseconds().toString();
         const timeHTML = document.querySelector(".timer");
-        timeHTML.innerText = `${timeMin}:${timeSec}`;
+        timeHTML.innerText = `${timeMin}:${timeSec}.${timeMilSec}`;
     }
 
     let timeInterval;
@@ -57,7 +58,7 @@ function appStart() {
             } else {
                 // word 다섯 글자 이하인 경우에만 알파벳 입력
                 if (document.querySelector('.timer').innerText === '00:00') {
-                    timeInterval = setInterval(gameTimer, 1000);
+                    timeInterval = setInterval(gameTimer, 1);
                 }
                 if (index <= 4) {
                     // console.log(clickData);
@@ -83,7 +84,7 @@ function appStart() {
                 "position:absolute; top:28vh; left:42vw; background-color:rgb(211,114,218);" +
                 " height:100px; padding: 10px 20px 10px 20px;";
         }
-
+        clearInterval(timeInterval);
         document.body.appendChild(div);
     }
 
@@ -97,8 +98,6 @@ function appStart() {
         if (correct === 5 || attempts === 5) {
             window.removeEventListener("keydown",handleKeyDown);
             displayGameOver(correct);
-            // 게임이 끝나면 시간이 증가하는 것을 막기 위한 함수
-            clearInterval(timeInterval);
         }
 
     }
@@ -164,7 +163,7 @@ function appStart() {
         if (keyCode >= 65 && keyCode <= 90) {
             // 처음 알파벳 입력 시에만 시간초를 시작하게 한다.
             if (document.querySelector('.timer').innerText === '00:00') {
-                timeInterval = setInterval(gameTimer, 1000);
+                timeInterval = setInterval(gameTimer, 1);
             }
 
             if (index <= 4) {
