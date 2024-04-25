@@ -23,9 +23,43 @@ function appStart() {
         // console.log(event.target);
         // console.log(event.target.getAttribute('data-key'));
         let clickData = event.target.getAttribute('data-key');
+        const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index}']`);
+
         if (clickData !== null) {
-            console.log(clickData);
+            if (clickData === 'Enter') {
+
+            } else if (clickData === 'Backspace') {
+
+            } else {
+                console.log(clickData);
+                thisBlock.innerText = clickData;
+                index++;
+                thisBlock.style.border = '4px solid black';
+            }
+
         }
+
+        // if (keyCode >= 65 && keyCode <= 90) {
+        //     if (index <= 4) {
+        //         thisBlock.innerText = key;
+        //         index++;
+        //         thisBlock.style.border = '4px solid black';
+        //     }
+        // } else if (keyCode === 13 && index === 5) {
+        //     // key = Enter
+        //     handleEnterKey(event);
+        //     attempts++;
+        //     index = 0;
+        // } else if (keyCode === 8) {
+        //     // key = Backspace
+        //     if (index > 0) {
+        //         const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index-1}']`);
+        //         thisBlock.innerText = '';
+        //         thisBlock.style.border = '4px solid rgb(211,214,218)';
+        //         index--;
+        //     }
+        //
+        // }
     }
 
     const displayGameOver = (correct) => {
