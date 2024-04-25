@@ -27,39 +27,31 @@ function appStart() {
 
         if (clickData !== null) {
             if (clickData === 'Enter') {
-
+                // 글자 수가 5글자가 아닌 경우에 입력하는 것을 방지함
+                if (index === 5) {
+                    handleEnterKey(event);
+                    attempts++;
+                    index = 0;
+                }
             } else if (clickData === 'Backspace') {
-
+                // 입력 글자가 잇는 경우에만 지우도록 함
+                if (index > 0) {
+                    const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index-1}']`);
+                    thisBlock.innerText = '';
+                    thisBlock.style.border = '4px solid rgb(211,214,218)';
+                    index--;
+                }
             } else {
-                console.log(clickData);
-                thisBlock.innerText = clickData;
-                index++;
-                thisBlock.style.border = '4px solid black';
+                // word 다섯 글자 이하인 경우에만 알파벳 입력
+                if (index <= 4) {
+                    // console.log(clickData);
+                    thisBlock.innerText = clickData;
+                    index++;
+                    thisBlock.style.border = '4px solid black';
+                }
             }
-
         }
 
-        // if (keyCode >= 65 && keyCode <= 90) {
-        //     if (index <= 4) {
-        //         thisBlock.innerText = key;
-        //         index++;
-        //         thisBlock.style.border = '4px solid black';
-        //     }
-        // } else if (keyCode === 13 && index === 5) {
-        //     // key = Enter
-        //     handleEnterKey(event);
-        //     attempts++;
-        //     index = 0;
-        // } else if (keyCode === 8) {
-        //     // key = Backspace
-        //     if (index > 0) {
-        //         const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index-1}']`);
-        //         thisBlock.innerText = '';
-        //         thisBlock.style.border = '4px solid rgb(211,214,218)';
-        //         index--;
-        //     }
-        //
-        // }
     }
 
     const displayGameOver = (correct) => {
