@@ -19,6 +19,18 @@ function appStart() {
     let totalResult = new Array(4);
     const thisTime = new Date();
 
+
+    // timer class
+    const gameTimer = () => {
+        const time = new Date(new Date() - thisTime);
+        const timeMin = time.getMinutes().toString().padStart(2,'0');
+        const timeSec = time.getSeconds().toString().padStart(2,'0');
+        const timeHTML = document.querySelector(".timer");
+        timeHTML.innerText = `${timeMin}:${timeSec}`;
+    }
+
+    let timeInterval;
+
     // 클릭 시 키 값 가져오는 구문
     const handleOnClick = (event) => {
         // console.log(event.target);
@@ -44,6 +56,9 @@ function appStart() {
                 }
             } else {
                 // word 다섯 글자 이하인 경우에만 알파벳 입력
+                if (document.querySelector('.timer').innerText === '00:00') {
+                    timeInterval = setInterval(gameTimer, 1000);
+                }
                 if (index <= 4) {
                     // console.log(clickData);
                     thisBlock.innerText = clickData;
@@ -147,6 +162,11 @@ function appStart() {
         const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index}']`);
 
         if (keyCode >= 65 && keyCode <= 90) {
+            // 처음 알파벳 입력 시에만 시간초를 시작하게 한다.
+            if (document.querySelector('.timer').innerText === '00:00') {
+                timeInterval = setInterval(gameTimer, 1000);
+            }
+
             if (index <= 4) {
                 thisBlock.innerText = key;
                 index++;
@@ -168,17 +188,6 @@ function appStart() {
 
         }
     }
-
-    const gameTimer = () => {
-        const time = new Date(new Date() - thisTime);
-        const timeMin = time.getMinutes().toString().padStart(2,'0');
-        const timeSec = time.getSeconds().toString().padStart(2,'0');
-        const timeHTML = document.querySelector(".timer");
-        timeHTML.innerText = `${timeMin}:${timeSec}`;
-    }
-
-    const timeInterval = setInterval(gameTimer, 1000);
-
 
     window.addEventListener("keydown",handleKeyDown);
     // button으로 국한 하면 처음에 잇는 값 하나만 받아오고, 나머지는 동작하지 않기 때문에 window로 받는다.
