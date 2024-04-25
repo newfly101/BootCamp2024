@@ -17,8 +17,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid rgb(226,230,234);
-    background-color: rgb(226,230,234);
+    border: 2px solid rgb(211,214,218);
+    background-color: rgb(211,214,218);
     width: 60px;
     height: 80px;
     border-radius: 10px;
@@ -29,8 +29,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid rgb(226,230,234);
-    background-color: rgb(226,230,234);
+    border: 2px solid rgb(211,214,218);
+    background-color: rgb(211,214,218);
     width: 100px;
     height: 80px;
     border-radius: 10px;
@@ -41,8 +41,8 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid rgb(226,230,234);
-    background-color: rgb(226,230,234);
+    border: 2px solid rgb(211,214,218);
+    background-color: rgb(211,214,218);
     width: 100px;
     height: 80px;
     border-radius: 10px;
