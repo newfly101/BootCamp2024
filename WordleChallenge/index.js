@@ -18,24 +18,34 @@ function appStart() {
 
     let totalResult = new Array(4);
 
-    const displayGameOver = () => {
+
+    const displayGameOver = (correct) => {
         const div = document.createElement("div");
-        div.innerText = "게임이 종료되었습니다.";
-        div.style = "display:flex; justify-content:center; align-items:center;";
+        if (correct !== 5) {
+            div.innerText = "게임이 종료되었습니다. \n 정답: "+wordleResult;
+            div.style = "display:flex; justify-content:center; align-items:center;" +
+                "position:absolute; top:28vh; left:35vw; background-color:rgb(211,114,218);" +
+                " height:100px; padding: 10px 20px 10px 20px;";
+        } else {
+            div.innerText = "정답입니다!";
+            div.style = "display:flex; justify-content:center; align-items:center;" +
+                "position:absolute; top:28vh; left:42vw; background-color:rgb(211,114,218);" +
+                " height:100px; padding: 10px 20px 10px 20px;";
+        }
+
         document.body.appendChild(div);
     }
 
     const gameOver = () => {
         // 추가로 입력하는 것을 제한함
-        let correct = 0;
-        console.log("attempts:"+attempts,"index:"+index);
+        let correct = 0; // 정답 개수
         for (let i = 0 ; i < wordleResult.length; i++) {
             if(wordleResult[i] === totalResult[i]) correct++;
         }
         // 총 시도 횟수가 6회이거나, 정답이 5개인 경우 입력을 제한합니다.
         if (correct === 5 || attempts === 5) {
             window.removeEventListener("keydown",handleKeyDown);
-            displayGameOver();
+            displayGameOver(correct);
         }
 
     }
