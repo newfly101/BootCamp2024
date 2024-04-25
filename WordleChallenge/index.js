@@ -20,8 +20,12 @@ function appStart() {
 
     // 클릭 시 키 값 가져오는 구문
     const handleOnClick = (event) => {
-        console.log(event.target);
-        console.log(event.target.getAttribute('data-key'));
+        // console.log(event.target);
+        // console.log(event.target.getAttribute('data-key'));
+        let clickData = event.target.getAttribute('data-key');
+        if (clickData !== null) {
+            console.log(clickData);
+        }
     }
 
     const displayGameOver = (correct) => {
