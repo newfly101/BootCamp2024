@@ -15,31 +15,41 @@ let attempts = 0;
 const wordleResult = 'MONEY';
 
 function appStart() {
-    // const displayGameover = () => {
-    //     const div = document.createElement("div");
-    //     div.innerText = "게임이 종료되었습니다.";
-    //     div.style = "display:flex; justify-content:center; align-items:center;";
-    //     document.body.appendChild(div);
-    // }
-    //
-    // const gameover = () => {
-    //     window.removeEventListener("keydown",handleKeyDown);
-    // }
 
     let totalResult = new Array(4);
 
+    const displayGameOver = () => {
+        const div = document.createElement("div");
+        div.innerText = "게임이 종료되었습니다.";
+        div.style = "display:flex; justify-content:center; align-items:center;";
+        document.body.appendChild(div);
+    }
+
+    const gameOver = () => {
+        // 추가로 입력하는 것을 제한함
+        let correct = 0;
+        console.log("attempts:"+attempts,"index:"+index);
+        for (let i = 0 ; i < wordleResult.length; i++) {
+            if(wordleResult[i] === totalResult[i]) correct++;
+        }
+        // 총 시도 횟수가 6회이거나, 정답이 5개인 경우 입력을 제한합니다.
+        if (correct === 5 || attempts === 5) {
+            window.removeEventListener("keydown",handleKeyDown);
+            displayGameOver();
+        }
+
+    }
+
+
     const handleEnterKey = (event) => {
         // 정답 확인
-        console.log(event);
-        let result = '';
+        // console.log(event);
         for (let i = 0 ; i < 5; i++) {
             let inputBlock = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
             let inputText = inputBlock.innerText;
             let wordBlock = document.querySelector(`.word-key[data-key='${inputText}']`);
-            console.log(wordBlock.innerText);
 
             // 오류 나는 부분 : 하단 wordBlock 의 색상이 계속 변경됨 이것을 정답 시 고정시키는 게 필요함
-            console.log("wordBlock => ",wordBlock);
             if (inputText === wordleResult[i]) {
                 // 정답 완벽 일치 시 color 색상 설정
                 inputBlock.style.background = "#6aaa64";
@@ -69,6 +79,7 @@ function appStart() {
             inputBlock.style.color = "white";
         }
         // console.log(totalResult);
+        gameOver();
     }
 
     const handleKeyDown = (event) => {
