@@ -26,6 +26,12 @@ footer {
     font-weight: bold;
     cursor: pointer;
 }
+
+.word-key:hover {
+    border: 2px solid rgb(160, 160, 164);
+    background-color: rgb(160, 160, 164);
+}
+
 .word-key-enter {
     display: flex;
     justify-content: center;
@@ -39,6 +45,12 @@ footer {
     font-weight: bold;
     cursor: pointer;
 }
+
+.word-key-enter:hover {
+    border: 2px solid rgb(160, 160, 164);
+    background-color: rgb(160, 160, 164);
+}
+
 .word-key-delete {
     display: flex;
     justify-content: center;
@@ -49,6 +61,10 @@ footer {
     height: 80px;
     border-radius: 10px;
     cursor: pointer;
+}
+.word-key-delete:hover {
+    border: 2px solid rgb(160, 160, 164);
+    background-color: rgb(160, 160, 164);
 }
 .word-key-delete img {
     width: 45px;

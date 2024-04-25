@@ -23,3 +23,13 @@ main {
     font-size: 25px;
     font-weight: bold;
 }
+
+@keyframes mainBoard {
+    0% {
+        transform: rotateX(0);
+    } 50% {
+        transform: rotateX(180deg);
+    } 100% {
+        transform: rotateX(0);
+    }
+}

@@ -124,6 +124,15 @@ function appStart() {
         }
         // console.log(totalResult);
         gameOver();
+
+        let count = 2;
+        for (let i = 0; i < 5; i++) {
+            let inputBlock = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
+            inputBlock.style.animation = `${count}s mainBoard`;
+            inputBlock.style.transition = 'transform 0.1s';
+            count+=1;
+            console.log(count);
+        }
     }
 
     const handleKeyDown = (event) => {
