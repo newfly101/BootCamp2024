@@ -24,6 +24,7 @@ footer {
     border-radius: 10px;
     font-size: 30px;
     font-weight: bold;
+    cursor: pointer;
 }
 .word-key-enter {
     display: flex;
@@ -36,6 +37,7 @@ footer {
     border-radius: 10px;
     font-size: 25px;
     font-weight: bold;
+    cursor: pointer;
 }
 .word-key-delete {
     display: flex;
@@ -46,7 +48,7 @@ footer {
     width: 100px;
     height: 80px;
     border-radius: 10px;
-
+    cursor: pointer;
 }
 .word-key-delete img {
     width: 45px;

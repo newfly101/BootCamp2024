@@ -18,6 +18,12 @@ function appStart() {
 
     let totalResult = new Array(4);
 
+    // 클릭 시 키 값 가져오는 구문
+    const button = document.querySelector(".word-key");
+    button.addEventListener("click", (event) => {
+        console.log(event.target.getAttribute('data-key'));
+    })
+
 
     const displayGameOver = (correct) => {
         const div = document.createElement("div");
