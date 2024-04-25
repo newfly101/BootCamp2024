@@ -17,6 +17,7 @@ const wordleResult = 'MONEY';
 function appStart() {
 
     let totalResult = new Array(4);
+    const thisTime = new Date();
 
     // 클릭 시 키 값 가져오는 구문
     const handleOnClick = (event) => {
@@ -81,6 +82,8 @@ function appStart() {
         if (correct === 5 || attempts === 5) {
             window.removeEventListener("keydown",handleKeyDown);
             displayGameOver(correct);
+            // 게임이 끝나면 시간이 증가하는 것을 막기 위한 함수
+            clearInterval(timeInterval);
         }
 
     }
@@ -165,6 +168,18 @@ function appStart() {
 
         }
     }
+
+    const gameTimer = () => {
+        const time = new Date(new Date() - thisTime);
+        const timeMin = time.getMinutes().toString().padStart(2,'0');
+        const timeSec = time.getSeconds().toString().padStart(2,'0');
+        const timeHTML = document.querySelector(".timer");
+        timeHTML.innerText = `${timeMin}:${timeSec}`;
+    }
+
+    const timeInterval = setInterval(gameTimer, 1000);
+
+
     window.addEventListener("keydown",handleKeyDown);
     // button으로 국한 하면 처음에 잇는 값 하나만 받아오고, 나머지는 동작하지 않기 때문에 window로 받는다.
     window.addEventListener("click",handleOnClick);
