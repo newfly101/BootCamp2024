@@ -8,6 +8,7 @@
 .menu-bar__wordle {
     font-size: 30px;
     font-weight: bold;
+    margin-left: 40px;
 }
 .menu-bar__menu {
     width: 30px;

@@ -6,6 +6,15 @@ main {
     padding-top: 20px;
     gap: 5px;
 }
+
+.timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+    font-size: 25px;
+}
+
 .board-row {
     display: flex;
     justify-content: center;
