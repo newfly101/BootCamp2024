@@ -19,11 +19,10 @@ function appStart() {
     let totalResult = new Array(4);
 
     // 클릭 시 키 값 가져오는 구문
-    const button = document.querySelector(".word-key");
-    button.addEventListener("click", (event) => {
+    const handleOnClick = (event) => {
+        console.log(event.target);
         console.log(event.target.getAttribute('data-key'));
-    })
-
+    }
 
     const displayGameOver = (correct) => {
         const div = document.createElement("div");
@@ -125,6 +124,8 @@ function appStart() {
         }
     }
     window.addEventListener("keydown",handleKeyDown);
+    // button으로 국한 하면 처음에 잇는 값 하나만 받아오고, 나머지는 동작하지 않기 때문에 window로 받는다.
+    window.addEventListener("click",handleOnClick);
 }
 
 // 앱 시작
