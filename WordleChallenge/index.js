@@ -41,9 +41,8 @@ function appStart() {
     }
 
 
-    const handleEnterKey = (event) => {
+    const handleEnterKey = () => {
         // 정답 확인
-        // console.log(event);
         for (let i = 0 ; i < 5; i++) {
             let inputBlock = document.querySelector(`.board-block[data-index='${attempts}${i}']`);
             let inputText = inputBlock.innerText;
