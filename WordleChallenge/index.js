@@ -169,6 +169,8 @@ function appStart() {
             if (index <= 4) {
                 thisBlock.innerText = key;
                 index++;
+                thisBlock.style.animation = '$2s mainBoard';
+                thisBlock.style.transition = 'transform 1s scale(0.3)';
                 thisBlock.style.border = '4px solid black';
             }
         } else if (keyCode === 13 && index === 5) {
