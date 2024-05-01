@@ -17,7 +17,7 @@ const wordleResult = 'MONEY';
 function appStart() {
 
     let totalResult = new Array(4);
-    const thisTime = new Date();
+    let thisTime = null;
 
 
     // timer class
@@ -28,6 +28,7 @@ function appStart() {
         const timeMilSec = time.getMilliseconds().toString();
         const timeHTML = document.querySelector(".timer");
         timeHTML.innerText = `${timeMin}:${timeSec}.${timeMilSec}`;
+        console.log(`${timeMin}:${timeSec}`);
     }
 
     let timeInterval;
@@ -36,10 +37,15 @@ function appStart() {
     const handleOnClick = (event) => {
         // console.log(event.target);
         // console.log(event.target.getAttribute('data-key'));
+        if (thisTime === null) {
+            thisTime = new Date();
+        }
         let clickData = event.target.getAttribute('data-key');
         const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index}']`);
 
+        console.log("클릭 한 경우 div 값 : ",clickData);
         if (clickData !== null) {
+            console.log("null check : ",clickData);
             if (clickData === 'Enter') {
                 // 글자 수가 5글자가 아닌 경우에 입력하는 것을 방지함
                 if (index === 5) {
@@ -160,6 +166,10 @@ function appStart() {
         const keyCode = event.keyCode;
         const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index}']`);
 
+        if (thisTime === null) {
+            thisTime = new Date();
+        }
+
         if (keyCode >= 65 && keyCode <= 90) {
             // 처음 알파벳 입력 시에만 시간초를 시작하게 한다.
             if (document.querySelector('.timer').innerText === '00:00') {
@@ -192,6 +202,7 @@ function appStart() {
 
     window.addEventListener("keydown",handleKeyDown);
     // button으로 국한 하면 처음에 잇는 값 하나만 받아오고, 나머지는 동작하지 않기 때문에 window로 받는다.
+    // document.getElementById("word-key").addEventListener("click",handleOnClick);
     window.addEventListener("click",handleOnClick);
 }
 
