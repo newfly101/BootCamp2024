@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Selector</title>
+    <style>
+        /*.btn {*/
+        /*    background-color: aqua;*/
+        /*}*/
+        /*#btn-3 {*/
+        /*    background-color: yellow;*/
+        /*}*/
+        div > button:nth-child(3){
+            background-color: brown;
+        }
+        button:active {
+            background-color: tomato;
+        }
+        button:hover {
+            background-color: yellow;
+        }
+        a:visited {
+            color: greenyellow;
+        }
+        button {
+            border: none;
+            outline: none;
+            background-color: black;
+            color: white;
+            padding: 5px 10px 5px 10px;
+            font-size: 10px;
+            border-radius: 5px;
+            /*테두리가 깎이는 역할*/
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <a href="https://www.naver.com" >네이버</a>
+        <button class="btn" id="btn-1">1번 버튼</button>
+        <button class="btn" id="btn-2">2번 버튼</button>
+        <button class="btn" id="btn-3">3번 버튼</button>
+        <button class="btn" id="btn-4">로그인</button>
+        <button class="btn" id="btn-5">뒤로 가기</button>
+    </div>
+    <main>
+        <button class="btn" id="btn-1">1번 버튼</button>
+        <button class="btn" id="btn-2">2번 버튼</button>
+        <button class="btn" id="btn-3">3번 버튼</button>
+        <button class="btn" id="btn-4">로그인</button>
+        <button class="btn" id="btn-5">뒤로 가기</button>
+    </main>
+</body>
+</html>

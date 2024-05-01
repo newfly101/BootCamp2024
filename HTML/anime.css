@@ -1,0 +1,78 @@
+:root {
+    --main-color: rgb(147, 20, 147);
+}
+/*추상화를 해서 변수 지정을 하면 좀 더 편의성있고 일관적으로 적용가능함*/
+
+div {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(98, 220, 147);
+}
+.main-screen {
+    background-color: white;
+}
+.alert {
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    position: fixed;
+    background-color: red;
+    top: 0;
+    left: 0;
+    /*opacity: 0;*/
+    /*불투명도 1 : 보여짐 / 0 : 안보여짐*/
+}
+.logo {
+    width: 200px;
+    height: 200px;
+    animation: 1s awesome infinite alternate;
+}
+.box {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    transition: all 0.3s ease-in-out;
+    animation: 1s awesome infinite alternate;
+    justify-content: center;
+    align-content: center;
+}
+.box:hover {
+    /*transform: scale(2);*/
+    /*내가 위치한 기준으로 모든것이 두배가된다.*/
+    /*transform: translate(50px, 0);*/
+    /*이동시키는 방법*/
+    /*transform: rotate(90deg) scale(0.5);*/
+
+}
+/*변수로 컬러의 값을 지정하는 경우*/
+div > button {
+    background-color: var(--main-color);
+}
+
+/*#1 특정 애니메이션을 만들어야 하는 경우*/
+/*@keyframes awesome {*/
+/*    from {*/
+/*        */
+/*    } to {*/
+/*    */
+/*    }*/
+/*}*/
+@keyframes awesome {
+    0% {
+        transform: translate(0);
+    } 50% {
+        transform: translate(50px) rotate(180deg);
+    } 100% {
+        transform: translate(50px, 50px) scale(3);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .main-screen {
+        background-color: orange;
+    }
+    .alert {
+        /*opacity: 1;*/
+        display: block;
+    }
+}
