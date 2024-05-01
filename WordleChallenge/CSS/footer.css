@@ -1,0 +1,71 @@
+footer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 150px;
+}
+.word-keyInput {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 5px;
+}
+
+.word-key {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(211,214,218);
+    background-color: rgb(211,214,218);
+    width: 60px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.word-key:hover {
+    border: 2px solid rgb(160, 160, 164);
+    background-color: rgb(160, 160, 164);
+}
+
+.word-key-enter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(211,214,218);
+    background-color: rgb(211,214,218);
+    width: 100px;
+    height: 80px;
+    border-radius: 10px;
+    font-size: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.word-key-enter:hover {
+    border: 2px solid rgb(160, 160, 164);
+    background-color: rgb(160, 160, 164);
+}
+
+.word-key-delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(211,214,218);
+    background-color: rgb(211,214,218);
+    width: 100px;
+    height: 80px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.word-key-delete:hover {
+    border: 2px solid rgb(160, 160, 164);
+    background-color: rgb(160, 160, 164);
+}
+.word-key-delete img {
+    width: 45px;
+}
