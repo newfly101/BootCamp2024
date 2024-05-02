@@ -17,7 +17,9 @@ const wordleResult = 'MONEY';
 function appStart() {
 
     let totalResult = new Array(4);
-    const thisTime = new Date();
+    // date 값을 가져 오는 것은 사용자가 정상적으로 클릭 했을 때만 등록하도록 한다.
+    let thisTime = null;
+    // const thisTime = new Date();
 
 
     // timer class
@@ -36,6 +38,9 @@ function appStart() {
     const handleOnClick = (event) => {
         // console.log(event.target);
         // console.log(event.target.getAttribute('data-key'));
+        if (thisTime === null) {
+            thisTime = new Date();
+        }
         let clickData = event.target.getAttribute('data-key');
         const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index}']`);
 
@@ -159,6 +164,10 @@ function appStart() {
         const key = event.key.toUpperCase();
         const keyCode = event.keyCode;
         const thisBlock = document.querySelector(`.board-block[data-index='${attempts}${index}']`);
+
+        if (thisTime === null) {
+            thisTime = new Date();
+        }
 
         if (keyCode >= 65 && keyCode <= 90) {
             // 처음 알파벳 입력 시에만 시간초를 시작하게 한다.
