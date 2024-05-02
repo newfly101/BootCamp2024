@@ -24,6 +24,16 @@ toDayViewer();
 // 1주차_신입연수원_DAY4_사수 도움 요청 업무_문제③
 // setTimeout을 이용해 setInterval처럼 1초마다 console.log(’내용은 자유’)를 호출하고 싶은데 어떻게 만들면 좋을까요?
 
+function sendMsg() {
+    console.log('내용은 자유');
+    // main에서 1초만 호출 하기 때문에 한번 더 재귀로 반복 시켜준다.
+    // setInterval 과 같은 동작을 하기 위해서는 재귀형으로 코드 작성해야 한다.
+    // 이러한 코드는 가독성이 떨어지기 때문에 지향해야 한다.
+    setTimeout(sendMsg, 1000);
+}
+
+// 1초 마다 반복 : 1초후에 한번 sendMsg 를 호출하고 종료
+setTimeout(sendMsg, 1000);
 
 
 
