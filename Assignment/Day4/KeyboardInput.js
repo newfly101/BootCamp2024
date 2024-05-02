@@ -33,17 +33,25 @@ function sendMsg() {
 }
 
 // 1초 마다 반복 : 1초후에 한번 sendMsg 를 호출하고 종료
-setTimeout(sendMsg, 1000);
+// setTimeout(sendMsg, 1000);
 
 
 // 1주차_신입연수원_DAY4_팀장님 지시 업무_문제①
 // 키보드에도 동일하게 정답 표시가 표시되게 구현하고 키보드 클릭으로 입력이 가능하도록 구현해주세요~!
 
 const keydownF = (event) => {
-    console.log(event);
+    // console.log(event);
     let word = document.querySelector(".check-keyboard");
     console.log(event.key, event.keyCode);
-    word.innerText = event.key.toUpperCase()+", "+event.keyCode;
+    if (!(event.keyCode < 65 || event.keyCode > 90)) {
+        word.innerText = event.key.toUpperCase()+", "+event.keyCode;
+    } else if (event.keyCode === 32) {
+        word.innerText = "Space";
+    } else {
+        word.innerText = event.key;
+    }
+
+
 }
 
 window.addEventListener("keydown", keydownF);
