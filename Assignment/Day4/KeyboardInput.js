@@ -21,6 +21,12 @@ function newDateToday() {
 }
 toDayViewer();
 
+// 1주차_신입연수원_DAY4_사수 도움 요청 업무_문제③
+// setTimeout을 이용해 setInterval처럼 1초마다 console.log(’내용은 자유’)를 호출하고 싶은데 어떻게 만들면 좋을까요?
+
+
+
+
 // const keydownF = (event) => {
 //     console.log(event);
 //     let word = document.querySelector(".check-keyboard");
