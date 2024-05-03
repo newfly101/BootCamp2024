@@ -37,7 +37,7 @@ function appStart() {
     // 클릭 시 키 값 가져오는 구문
     const handleOnClick = (event) => {
         // console.log(event.target);
-        // console.log(event.target.getAttribute('data-key'));
+        console.log("마우스가 클릭하는 부분 : ", event.target.getAttribute('data-key'));
         if (thisTime === null) {
             thisTime = new Date();
         }
