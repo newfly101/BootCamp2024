@@ -13,3 +13,5 @@ app.mount("/", StaticFiles(directory="static", html=True), name="static")
 # python -m uvicorn main:app --reload
 
 # *** 페이지를 새로고침 하려면 shift+F5 를 눌러서 백엔드 서버도 새로고침 하기
+
+# 서버에서 아무것도 받을 준비가 되지 않았기 때문에 발생하는 405 error
