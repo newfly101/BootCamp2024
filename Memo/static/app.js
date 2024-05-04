@@ -7,8 +7,8 @@ function displayMemos(memos) {
 }
 
 async function readMemo(){
-    const res = await fetch("/memos")
-    const jsonRes = await res.json()
+    const res = await fetch("/memos");
+    const jsonRes = await res.json();
     
     // 데이터를 받아오면 내부 html 을 초기화 해줌
     const ul = document.querySelector("#memo-ul");
