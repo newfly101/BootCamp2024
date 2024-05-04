@@ -4,6 +4,9 @@ async function readMemo(){
     console.log("readMemo: ",jsonRes);
 }
 
+// 함수 그냥 호출 해주기
+readMemo();
+
 async function createMemo(value) {
     // 서버에 메모를 생성 요청
     console.log("inputMemo값 출력 : ", value);
