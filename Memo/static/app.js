@@ -1,11 +1,23 @@
+function displayMemos(memos) {
+    // data = [{id:"123", content:"inputData"}]
+    const ul = document.querySelector("#memo-ul");
+    const li = document.createElement("li");
+    li.innerText = `[id:${memos.id}] ${memos.content}`;
+    ul.appendChild(li);
+}
+
 async function readMemo(){
     const res = await fetch("/memos")
     const jsonRes = await res.json()
-    console.log("readMemo: ",jsonRes);
+    
+    // 데이터를 받아오면 내부 html 을 초기화 해줌
+    const ul = document.querySelector("#memo-ul");
+    ul.innerHTML = "";
+    // console.log("readMemo: ",jsonRes);
+    jsonRes.forEach(displayMemos);
 }
 
-// 함수 그냥 호출 해주기
-readMemo();
+
 
 async function createMemo(value) {
     // 서버에 메모를 생성 요청
@@ -20,13 +32,15 @@ async function createMemo(value) {
                     id: new Date(),
                     content: value,
             }),
-        }); // GET 요청
-        console.log("response : ", res.body);
+        });
+        // console.log("response : ", res.body);
         const jsonRes = await res.json();
         console.log("jsonRes", jsonRes);
+        readMemo();
     } catch (e) {
         console.log("error: ", e.message);
     }
+
 }
 
 function handleSubmit(event) {
@@ -42,3 +56,7 @@ function handleSubmit(event) {
 // 제출과 동시에 redirect 됨
 const form = document.querySelector('#memo-form');
 form.addEventListener("submit", handleSubmit);
+
+
+// 서버에 계속 저장하고 있을 수 있음.
+readMemo();
