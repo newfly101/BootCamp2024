@@ -1,3 +1,9 @@
+async function readMemo(){
+    const res = await fetch("/memos")
+    const jsonRes = await res.json()
+    console.log("readMemo: ",jsonRes);
+}
+
 async function createMemo(value) {
     // 서버에 메모를 생성 요청
     console.log("inputMemo값 출력 : ", value);
