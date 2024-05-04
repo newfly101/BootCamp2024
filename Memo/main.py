@@ -12,6 +12,14 @@ memos = []
 
 app = FastAPI()
 
+
+# memo를 갖고오게 get으로 읽어옴
+@app.get("/memos")
+def read_memo():
+    return memos
+
+
+
 # 서버에서 아무것도 받을 준비가 되지 않았기 때문에 발생하는 405 error
 @app.post("/memos")
 async def create_memo(memo: Memo):
