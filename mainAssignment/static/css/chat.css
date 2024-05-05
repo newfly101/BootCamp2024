@@ -1,19 +1,19 @@
 main {
-    padding: 30px 20px 30px 20px;
+    /*padding: 30px 20px 30px 20px;*/
 }
 
 .chat-channel {
-    width: 100vw;
-    height: calc(100vh - 270px);
+    width: calc(100vw - 17px);
+    height: calc(100vh - 240px);
 }
 
 .msg-bar {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    padding-left: 10px;
-    padding-right: 10px;
+    position: fixed;
+    bottom: 110px;
+    width: 100vw;
 }
 
 #chat-form {
@@ -25,15 +25,24 @@ main {
     flex: 1;
     padding-left: 5px;
     padding-right: 20px;
-    width: calc(100vw - 80px);
+    width: calc(100vw - 85px);
     box-sizing: border-box;
 }
 
-.msg-bar-icon {
+.msg-bar input {
+
+}
+.msg-bar-plus {
     width: 20px;
     height: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
+    /*padding-left: 10px;*/
+    padding-right: 5px;
+}
+.msg-bar-submit {
+    width: 20px;
+    height: 20px;
+    padding-left: 5px;
+    /*padding-right: 10px;*/
 }
 
 /*.item-list {*/
