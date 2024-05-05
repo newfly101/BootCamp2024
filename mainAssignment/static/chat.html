@@ -8,8 +8,9 @@
     <title>당근 마켓 clone</title>
 <!--    <link rel="stylesheet" href="css/style.css">-->
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/chat.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="shortcut icon" href="#" />
 </head>
 <body>
 <header>
@@ -39,16 +40,34 @@
 
 <main>
     <!--        default setting-->
-    <form id="chat-form">
-        <label for="send-message">메모를 입력 하세요</label>
-        <input type="text"
-               id="send-message"
-               placeholder="여기에 메모를 입력 해 주세요."
-               required
-        />
-        <button type="submit" id="chat-submit-button">생성!</button>
-    </form>
+    <div></div>
+    <div class="chat-channel">
+
+    </div>
     <ul id="chat-ul"></ul>
+    <div class="msg-bar">
+        <form id="chat-form">
+            <input class="msg-bar-icon"
+                   type="image"
+                   name="chatFile"
+                   src="asset/main/chat/plus.svg"
+                   id="chat-file"
+                   alt="plus" />
+            <label for="send-message"> </label>
+            <input type="text"
+                 id="send-message"
+                 placeholder="메시지 보내기"
+                 required
+            />
+            <input class="msg-bar-icon"
+                   type="image"
+                   name="submit"
+                   src="asset/main/chat/sendMsg.svg"
+                   id="chat-submit"
+                   alt="submit" />
+        </form>
+
+    </div>
 </main>
 
 <footer>
