@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 # from fastapi.templating import Jinja2Templates
 
 class Chat(BaseModel):
-    date:str
+    id:str
     content:str
 
 chats = []
@@ -23,10 +23,10 @@ async def read_chats():
 
 
 # chat 서버 통신
-# @app.post("/chat")
-# async def create_chat(chat: Chat):
-#     chats.append(chat)
-#     return {"message": "Chat created", "chats": chats}
+@app.post("/chat")
+async def create_chat(chat: Chat):
+    chats.append(chat)
+    return {"message": "Chat created", "chats": chats}
 
 
 # 루트 경로에 우리의 static 파일에 있는 html을 호스팅 해준다.
