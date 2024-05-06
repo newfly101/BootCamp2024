@@ -1,9 +1,20 @@
+function editMemo() {
+    console.log(event.target);    // < button data-id = "2024-05-06T06:56:08.990Z"> 수정 </button>
+}
+
+
 function displayMemos(memos) {
     // data = [{id:"123", content:"inputData"}]
     const ul = document.querySelector("#memo-ul");
     const li = document.createElement("li");
+    const editBtn = document.createElement("button");
     li.innerText = `[id:${memos.id}] ${memos.content}`;
+    editBtn.innerText = "수정";
+    editBtn.addEventListener("click", editMemo);
+    editBtn.dataset.id = memos.id; // <button data-id=`${memos.id}` />
+
     ul.appendChild(li);
+    li.appendChild(editBtn);
 }
 
 async function readMemo(){
