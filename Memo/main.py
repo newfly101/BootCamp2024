@@ -24,6 +24,7 @@ def update_memo(req_memo: Memo):
     for memo in memos:
         if memo.id == req_memo.id:
             memo.content = req_memo.content
+            print("Recived Memo : ", memo)
             return {"message": "메모가 수정되었습니다.", "memo": memo.dict()}
     return {"message": "존재하지 않는 메모입니다.", "memo": memo.dict()}
 

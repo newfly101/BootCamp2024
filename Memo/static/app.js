@@ -12,7 +12,7 @@ async function editMemo(event) {
         }),
     });
     const jsonRes = await res.json();
-    console.log(jsonRes);
+    console.log("[서버] 메모 수정 요청: ",jsonRes);
     readMemo();    // < button data-id = "2024-05-06T06:56:08.990Z"> 수정 </button>
 }
 
@@ -61,7 +61,7 @@ async function createMemo(value) {
         });
         // console.log("response : ", res.body);
         const jsonRes = await res.json();
-        console.log("jsonRes", jsonRes);
+        console.log("[서버] 메모 생성 요청: ", jsonRes);
         readMemo();
     } catch (e) {
         console.log("error: ", e.message);
