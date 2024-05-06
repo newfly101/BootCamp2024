@@ -45,7 +45,7 @@ def delete_memo(memo_id):
         print("$$memo : ", memo)
         print("$$index : ", index)
         if memo.id == memo_id:
-            print("Memo.id : ", memo.id)
+            print("Memo.id : ", memo.id) # 조건절로 입력이 안됨 << 여기 수정해야함
             print("Memo.content : ", memo.content)
             print("Memo index : ", index)
             memos.pop(index)
