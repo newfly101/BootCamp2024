@@ -5,7 +5,7 @@ from pydantic import BaseModel, ValidationError
 from fastapi.staticfiles import StaticFiles
 
 class Memo(BaseModel):
-    id:str
+    id:int
     content:str
 
 memos = []
@@ -18,6 +18,14 @@ app = FastAPI()
 def read_memo():
     return memos
 
+
+@app.put("/memos/{id}")
+def update_memo(req_memo: Memo):
+    for memo in memos:
+        if memo.id == req_memo.id:
+            memo.content = req_memo.content
+            return {"message": "메모가 수정되었습니다.", "memo": memo.dict()}
+    return {"message": "존재하지 않는 메모입니다.", "memo": memo.dict()}
 
 
 # 서버에서 아무것도 받을 준비가 되지 않았기 때문에 발생하는 405 error

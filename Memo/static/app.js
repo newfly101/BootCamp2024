@@ -7,10 +7,12 @@ async function editMemo(event) {
             "Content-Type": "application/json", // 기본적으로 보내야 하는 header
         },
         body: JSON.stringify({
-            id, // id:id
+            id:id, // id,
             content: editText,
         }),
     });
+    const jsonRes = await res.json();
+    console.log(jsonRes);
     readMemo();    // < button data-id = "2024-05-06T06:56:08.990Z"> 수정 </button>
 }
 
@@ -45,6 +47,7 @@ async function readMemo(){
 async function createMemo(value) {
     // 서버에 메모를 생성 요청
     console.log("inputMemo값 출력 : ", value);
+    const date = new Date();
     try {
         const res = await fetch("/memos", {
             method: "POST",
@@ -52,7 +55,7 @@ async function createMemo(value) {
                 "Content-Type": "application/json", // 기본적으로 보내야 하는 header
             },
             body: JSON.stringify({
-                    id: new Date(),
+                    id: date.getTime(),
                     content: value,
             }),
         });
