@@ -16,19 +16,35 @@ async function editMemo(event) {
     readMemo();    // < button data-id = "2024-05-06T06:56:08.990Z"> 수정 </button>
 }
 
+async function deleteMemo(event) {
+    const id = event.target.dataset.id;
+    const res = await fetch(`/memos/${id}`, {
+        method: "DELETE",
+    });
+    const jsonRes = await res.json();
+    console.log("[서버] 메모 삭제 요청: ",jsonRes);
+    readMemo();    // < button data-id = "2024-05-06T06:56:08.990Z"> 수정 </button>
+
+}
 
 function displayMemos(memos) {
     // data = [{id:"123", content:"inputData"}]
     const ul = document.querySelector("#memo-ul");
     const li = document.createElement("li");
     const editBtn = document.createElement("button");
+    const deleteBtn = document.createElement("button");
     li.innerText = `[id:${memos.id}] ${memos.content}`;
     editBtn.innerText = "수정";
     editBtn.addEventListener("click", editMemo);
     editBtn.dataset.id = memos.id; // <button data-id=`${memos.id}` />
 
+    deleteBtn.innerText = "삭제";
+    deleteBtn.addEventListener("click", deleteMemo);
+    deleteBtn.dataset.id = memos.id;
+
     ul.appendChild(li);
     li.appendChild(editBtn);
+    li.appendChild(deleteBtn);
 }
 
 async function readMemo(){

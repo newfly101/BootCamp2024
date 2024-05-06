@@ -19,22 +19,39 @@ def read_memo():
     return memos
 
 
-@app.put("/memos/{id}")
-def update_memo(req_memo: Memo):
-    for memo in memos:
-        if memo.id == req_memo.id:
-            memo.content = req_memo.content
-            print("Recived Memo : ", memo)
-            return {"message": "메모가 수정되었습니다.", "memo": memo.dict()}
-    return {"message": "존재하지 않는 메모입니다.", "memo": memo.dict()}
-
-
-# 서버에서 아무것도 받을 준비가 되지 않았기 때문에 발생하는 405 error
+# 생성
 @app.post("/memos")
 async def create_memo(memo: Memo):
     print("Recived Memo : ", memo)
     memos.append(memo)
     return {"message": "메모가 생성되었습니다.", "memo": memo.dict()}
+
+# 수정
+@app.put("/memos/{id}")
+def update_memo(req_memo: Memo):
+    for memo in memos:
+        if memo.id == req_memo.id:
+            memo.content = req_memo.content
+            print("Change Memo : ", memo)
+            return {"message": "메모가 수정되었습니다.", "memo": memo.dict()}
+    return {"message": "존재하지 않는 메모입니다.", "memo": memo.dict()}
+
+# 삭제
+@app.delete("/memos/{memo_id}")
+def delete_memo(memo_id):
+    print("Deleting Memo : ", memo_id)
+    print("MEMOS : ", memos)
+    for index, memo in enumerate(memos): # 배열의 index와 값을 동시에 뽑아주는 function
+        print("$$memo : ", memo)
+        print("$$index : ", index)
+        if memo.id == memo_id:
+            print("Memo.id : ", memo.id)
+            print("Memo.content : ", memo.content)
+            print("Memo index : ", index)
+            memos.pop(index)
+            return {"message": "메모가 삭제되었습니다.", "memo": memo.dict()}
+    return {"message": "존재하지 않는 메모입니다.", "memo": memo.dict()}
+
 
 # 루트 경로에 우리의 static 파일에 있는 html을 호스팅 해준다.
 app.mount("/", StaticFiles(directory="static", html=True), name="static")
