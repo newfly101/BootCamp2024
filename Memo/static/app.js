@@ -1,5 +1,7 @@
-function editMemo() {
-    console.log(event.target);    // < button data-id = "2024-05-06T06:56:08.990Z"> 수정 </button>
+function editMemo(event) {
+    const id = event.target.dataset.id;
+    const editText = prompt("메모 수정 내용 입력하세요.");
+    console.log(editText);    // < button data-id = "2024-05-06T06:56:08.990Z"> 수정 </button>
 }
 
 
