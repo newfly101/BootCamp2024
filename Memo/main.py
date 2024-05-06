@@ -39,15 +39,8 @@ def update_memo(req_memo: Memo):
 # 삭제
 @app.delete("/memos/{memo_id}")
 def delete_memo(memo_id):
-    print("Deleting Memo : ", memo_id)
-    print("MEMOS : ", memos)
     for index, memo in enumerate(memos): # 배열의 index와 값을 동시에 뽑아주는 function
-        print("$$memo : ", memo)
-        print("$$index : ", index)
-        if memo.id == memo_id:
-            print("Memo.id : ", memo.id) # 조건절로 입력이 안됨 << 여기 수정해야함
-            print("Memo.content : ", memo.content)
-            print("Memo index : ", index)
+        if str(memo.id) == memo_id:
             memos.pop(index)
             return {"message": "메모가 삭제되었습니다.", "memo": memo.dict()}
     return {"message": "존재하지 않는 메모입니다.", "memo": memo.dict()}

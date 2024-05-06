@@ -21,8 +21,8 @@ async function deleteMemo(event) {
     const res = await fetch(`/memos/${id}`, {
         method: "DELETE",
     });
-    const jsonRes = await res.json();
-    console.log("[서버] 메모 삭제 요청: ",jsonRes);
+    // const jsonRes = await res.json();
+    // console.log("[서버] 메모 삭제 요청: ",jsonRes);
     readMemo();    // < button data-id = "2024-05-06T06:56:08.990Z"> 수정 </button>
 
 }
