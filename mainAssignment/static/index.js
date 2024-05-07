@@ -24,8 +24,8 @@ const renderData = (data) => {
         itemListImageDiv.className = 'item-list__img';
         itemListDiv.appendChild(itemListImageDiv);
 
-        const imageBox = document.createElement("input");
-        imageBox.src = 'asset/main/image.svg';
+        const imageBox = document.createElement("img");
+        imageBox.src = `data:image/jpg:base64, ${obj.image}`;
         imageBox.alt = 'image';
         itemListImageDiv.appendChild(imageBox);
 
@@ -35,10 +35,13 @@ const renderData = (data) => {
 
         const itemListInfoTitle = document.createElement("div");
         itemListInfoTitle.className = 'item-list__info-title';
+        itemListInfoTitle.innerText = obj.title;
         const itemListInfoMeta = document.createElement("div");
         itemListInfoMeta.className = 'item-list__info-meta';
+        itemListInfoMeta.innerText = `${obj.place} ${obj.createdTime}`;
         const itemListInfoPrice = document.createElement("div");
         itemListInfoPrice.className = 'item-list__info-price';
+        itemListInfoPrice.innerText = obj.price;
 
         itemListInfoDiv.appendChild(itemListInfoTitle);
         itemListInfoDiv.appendChild(itemListInfoMeta);
