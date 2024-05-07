@@ -1,12 +1,22 @@
 # 서버 구현하기
-from fastapi import FastAPI
+from fastapi import FastAPI, UploadFile, Form
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
+from typing import Annotated
 # from fastapi.templating import Jinja2Templates
 
 class Chat(BaseModel):
     id:str
     content:str
+
+# class Item(BaseModel):
+#     image:UploadFile
+#     title:Annotated[str,Form()]
+#     price:Annotated[int,Form()]
+#     description:Annotated[str,Form()]
+#     place:Annotated[str,Form()]
+
+
 
 chats = []
 
@@ -15,6 +25,20 @@ app = FastAPI()
 # url 의 이동을 만들기 위해서 실행해야 하는 명령어
 # pip install jinja2
 
+
+# @app.post("/items")
+# def create_item(item: Item):
+#     print(item)
+#     return '200'
+
+@app.post("/items")
+def create_item(image:UploadFile,
+                title:Annotated[str,Form()],
+                price:Annotated[int,Form()],
+                description:Annotated[str,Form()],
+                place:Annotated[str,Form()]):
+    print(image,title,price,description,place)
+    return '200'
 
 # chat 갖고오기
 @app.get("/chat")
