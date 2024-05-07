@@ -1,5 +1,5 @@
 # 서버 구현하기
-from fastapi import FastAPI, UploadFile, Form
+from fastapi import FastAPI, UploadFile, Form, Response
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
@@ -63,6 +63,16 @@ async def get_items():
     return JSONResponse(jsonable_encoder(dict(row) for row in rows))
     # [1, 'title', 'price', 'image' ... ] 으로 나오는데 이것을
     # { id:1, title:'title', ... } 의 형식으로 갖고 오게끔 한다.
+
+@app.get("/images/{item_id}")
+async def get_image(image_id):
+    cur = connect.cursor()
+    # db에 저장 할 때 image_bytes.hex() 로 저장 하기 때문에 16진법으로 받게 된다.
+    image_bytes = cur.execute(f"""
+                            SELECT image FROM Items WHERE id={image_id};
+    """).fetchone()[0]
+
+    return Response(content=bytes.fromhex(image_bytes))
 
 
 # chat 갖고오기

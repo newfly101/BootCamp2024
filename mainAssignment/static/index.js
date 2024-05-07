@@ -1,22 +1,10 @@
-/* 만들어야 하는 클래스 형태 */
-// <div className="item-list">
-//     <div className="item-list__img">
-//         <img src="asset/main/image.svg" alt="image"/>
-//     </div>
-//     <div className="item-list__info">
-//         <div className="item-list__info-title">게이밍 pc 팝니다</div>
-//         <div className="item-list__info-meta">역삼동 19초 전</div>
-//         <div className="item-list__info-price">100만원</div>
-//     </div>
-// </div>
-
 const calcTime = (timestamp) => {
     const UTCTime = 9*60*60*1000;
     const curTime = new Date().getTime() - UTCTime;
-    console.log("현재 시간 : ",curTime);
-    console.log("등록 시간 : ",timestamp);
+    // console.log("현재 시간 : ",curTime);
+    // console.log("등록 시간 : ",timestamp);
     const time = new Date(curTime - timestamp);
-    console.log("뺀 시간 : ",time);
+    // console.log("뺀 시간 : ",time);
 
     if(time.getHours() > 0) {
         return `${time.getHours()}시간 전`;
@@ -32,8 +20,8 @@ const renderData = (data) => {
     const main = document.querySelector("main");
     // data를 reverse() 반대로 출력함
 
-    data.reverse().forEach((obj) => {
-        console.log("list => ", obj);
+    data.reverse().forEach( async (obj) => {
+        // console.log("list => ", obj);
 
         const itemListDiv = document.createElement("div");
         itemListDiv.className = 'item-list';
@@ -44,7 +32,10 @@ const renderData = (data) => {
         itemListDiv.appendChild(itemListImageDiv);
 
         const imageBox = document.createElement("img");
-        imageBox.src = `data:image/jpg:base64, ${obj.image}`;
+        // image 를 변환하는 API를 만들어야 함.
+        const res = await fetch(`/images/${obj.id}`);
+        const blob = await res.blob();
+        imageBox.src = URL.createObjectURL(blob);
         imageBox.alt = 'image';
         itemListImageDiv.appendChild(imageBox);
 
@@ -77,7 +68,7 @@ const fetchList = async () => {
     const res = await fetch('/items');
     const data = await res.json();
 
-    console.log(data);
+    // console.log(data);
     renderData(data);
 };
 
