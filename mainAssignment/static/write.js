@@ -2,10 +2,12 @@ const form = document.getElementById("write-form");
 
 
 async function createNewWrite() {
+    const body = new FormData(form);
+    body.append('createdTime', new Date().getTime());
     try{
         const res = await fetch("/items", {
             method:'POST',
-            body: new FormData(form)
+            body: body
         });
         const jsonRes = await res.json();
         if (jsonRes === '200') {

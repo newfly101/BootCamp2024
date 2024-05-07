@@ -37,14 +37,15 @@ async def create_item(image:UploadFile,
                 title:Annotated[str,Form()],
                 price:Annotated[int,Form()],
                 description:Annotated[str,Form()],
-                place:Annotated[str,Form()]):
+                place:Annotated[str,Form()],
+                createdTime:Annotated[str,Form()]):
     print(image,title,price,description,place)
 
     # 이미지를 읽는 시간을 가짐
     image_bytes = await image.read()
     # db에 query문을 python에서 작성하는 방법
-    cur.execute(f"""INSERT INTO Items (title, image, price, description, place)
-                    VALUES ('{title}', '{image_bytes.hex()}', {price}, '{description}', '{place}')
+    cur.execute(f"""INSERT INTO Items (title, image, price, description, place, createdTime)
+                    VALUES ('{title}', '{image_bytes.hex()}', {price}, '{description}', '{place}','{createdTime}')
                 """)
     connect.commit()
     return '200'
