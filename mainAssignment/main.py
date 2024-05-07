@@ -3,7 +3,12 @@ from fastapi import FastAPI, UploadFile, Form
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
 from typing import Annotated
-# from fastapi.templating import Jinja2Templates
+import sqlite3
+
+# DataBase에 연결하는 구문
+connect = sqlite3.connect("db.db", check_same_thread=False)
+cur = connect.cursor()
+
 
 class Chat(BaseModel):
     id:str
@@ -17,19 +22,15 @@ class Chat(BaseModel):
 #     place:Annotated[str,Form()]
 
 
-
-chats = []
-
-app = FastAPI()
-
-# url 의 이동을 만들기 위해서 실행해야 하는 명령어
-# pip install jinja2
-
-
 # @app.post("/items")
 # def create_item(item: Item):
 #     print(item)
 #     return '200'
+
+
+chats = []
+
+app = FastAPI()
 
 @app.post("/items")
 def create_item(image:UploadFile,
