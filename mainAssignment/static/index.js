@@ -11,18 +11,20 @@
 // </div>
 
 const calcTime = (timestamp) => {
-    const curTime = new Date().getTime();
+    const UTCTime = 9*60*60*1000;
+    const curTime = new Date().getTime() - UTCTime;
+    console.log("현재 시간 : ",curTime);
+    console.log("등록 시간 : ",timestamp);
     const time = new Date(curTime - timestamp);
+    console.log("뺀 시간 : ",time);
 
-    if(time.getDay() > 0) {
-        return `${time.getDay()}일 전`;
-    } else if(time.getHours() > 0) {
+    if(time.getHours() > 0) {
         return `${time.getHours()}시간 전`;
     } else if(time.getMinutes() > 0) {
         return `${time.getMinutes()}분 전`;
     } else if(time.getSeconds() > 0) {
         return `${time.getSeconds()}초 전`;
-    } else return '';
+    } else return '방금 전';
 
 }
 
