@@ -4,7 +4,7 @@ main {
 
 .item-list {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;  /* 59강. 수정된 부분 */
     align-content: center;
     border-bottom: 1px solid #ededef;
     padding: 20px 0 20px 0;
@@ -22,7 +22,11 @@ main {
     align-content: center;
 }
 .item-list__img img{
-    width: 120px;
+    /* 59강. 수정된 부분 */
+    width: 150px;
+    height: auto;
+    overflow: hidden;
+    border-radius: 12px;
 }
 
 .item-list__info {
