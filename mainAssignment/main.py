@@ -1,5 +1,7 @@
 # 서버 구현하기
 from fastapi import FastAPI, UploadFile, Form
+from fastapi.responses import JSONResponse
+from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
 from typing import Annotated
@@ -49,6 +51,19 @@ async def create_item(image:UploadFile,
                 """)
     connect.commit()
     return '200'
+
+@app.get("/items")
+async def get_items():
+    # column 명도 같이 가져옴
+    connect.row_factory = sqlite3.Row
+    cur = connect.cursor()
+    rows = cur.execute(f"""
+                        SELECT * FROM Items;
+                       """).fetchall()
+    return JSONResponse(jsonable_encoder(dict(row) for row in rows))
+    # [1, 'title', 'price', 'image' ... ] 으로 나오는데 이것을
+    # { id:1, title:'title', ... } 의 형식으로 갖고 오게끔 한다.
+
 
 # chat 갖고오기
 @app.get("/chat")
