@@ -30,7 +30,9 @@ const calcTime = (timestamp) => {
 
 const renderData = (data) => {
     const main = document.querySelector("main");
-    data.forEach((obj) => {
+    // data를 reverse() 반대로 출력함
+
+    data.reverse().forEach((obj) => {
         console.log("list => ", obj);
 
         const itemListDiv = document.createElement("div");
