@@ -16,6 +16,17 @@ const calcTime = (timestamp) => {
 
 }
 
+// image만 불러와서 blob으로 변경하는 함수
+async function renderImage(obj) {
+    const res = await fetch(`/images/${obj.id}`);
+    console.log("res : ", res);
+    const blob = await res.blob();
+    console.log("blob : ", blob);
+    console.log("URL.createObjectURL(blob) : ", URL.createObjectURL(blob));
+    return URL.createObjectURL(blob);
+
+}
+
 const renderData = (data) => {
     const main = document.querySelector("main");
     // data를 reverse() 반대로 출력함
@@ -33,9 +44,7 @@ const renderData = (data) => {
 
         const imageBox = document.createElement("img");
         // image 를 변환하는 API를 만들어야 함.
-        const res = await fetch(`/images/${obj.id}`);
-        const blob = await res.blob();
-        imageBox.src = URL.createObjectURL(blob);
+        imageBox.src = await renderImage(obj);
         imageBox.alt = 'image';
         itemListImageDiv.appendChild(imageBox);
 

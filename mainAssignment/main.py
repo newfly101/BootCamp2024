@@ -65,11 +65,11 @@ async def get_items():
     # { id:1, title:'title', ... } 의 형식으로 갖고 오게끔 한다.
 
 @app.get("/images/{item_id}")
-async def get_image(image_id):
+async def get_image(item_id):
     cur = connect.cursor()
     # db에 저장 할 때 image_bytes.hex() 로 저장 하기 때문에 16진법으로 받게 된다.
     image_bytes = cur.execute(f"""
-                            SELECT image FROM Items WHERE id={image_id};
+                            SELECT image FROM Items WHERE id={item_id};
     """).fetchone()[0]
 
     return Response(content=bytes.fromhex(image_bytes))
