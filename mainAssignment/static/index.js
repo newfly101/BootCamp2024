@@ -10,6 +10,21 @@
 //     </div>
 // </div>
 
+const calcTime = (timestamp) => {
+    const curTime = new Date().getTime();
+    const time = new Date(curTime - timestamp);
+
+    if(time.getDay() > 0) {
+        return `${time.getDay()}일 전`;
+    } else if(time.getHours() > 0) {
+        return `${time.getHours()}시간 전`;
+    } else if(time.getMinutes() > 0) {
+        return `${time.getMinutes()}분 전`;
+    } else if(time.getSeconds() > 0) {
+        return `${time.getSeconds()}초 전`;
+    } else return '';
+
+}
 
 const renderData = (data) => {
     const main = document.querySelector("main");
@@ -38,7 +53,7 @@ const renderData = (data) => {
         itemListInfoTitle.innerText = obj.title;
         const itemListInfoMeta = document.createElement("div");
         itemListInfoMeta.className = 'item-list__info-meta';
-        itemListInfoMeta.innerText = `${obj.place} ${obj.createdTime}`;
+        itemListInfoMeta.innerText = `${obj.place} ${calcTime(obj.createdTime)}`;
         const itemListInfoPrice = document.createElement("div");
         itemListInfoPrice.className = 'item-list__info-price';
         itemListInfoPrice.innerText = obj.price;
