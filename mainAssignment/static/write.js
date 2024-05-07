@@ -6,8 +6,14 @@ async function createNewWrite() {
         method:'POST',
         body: new FormData(form)
     });
-    const jsonRes = res.json();
-    console.log("글쓰기 생성 : ", jsonRes);
+    const jsonRes = await res.json();
+    if (jsonRes === '200') {
+        console.log("글쓰기 생성 : ", jsonRes);
+        window.location.pathname = "/";
+    } else {
+        console.error("이미지 업로드에 실패했습니다.")
+    }
+
 }
 
 const handleSubmit = (event) => {
