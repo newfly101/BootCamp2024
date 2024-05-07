@@ -16,21 +16,25 @@ class Chat(BaseModel):
     id:str
     content:str
 
-# class Item(BaseModel):
-#     image:UploadFile
-#     title:Annotated[str,Form()]
-#     price:Annotated[int,Form()]
-#     description:Annotated[str,Form()]
-#     place:Annotated[str,Form()]
-
-
-# @app.post("/items")
-# def create_item(item: Item):
-#     print(item)
-#     return '200'
-
-
 chats = []
+
+# main.py를 실행할 때 DB에 TABLE이 없는 경우 생성해 주는 코드
+# IF NOT EXISTS 조건문을 집어넣음
+cur.execute(f"""
+            CREATE TABLE IF NOT EXISTS items (
+                id INTEGER PRIMARY KEY,
+                title TEXT NOT NULL,
+                image BLOB,
+                price INTEGER NOT NULL,
+                description TEXT,
+                place TEXT NOT NULL,
+                createdTime INTEGER NOT NULL
+            );
+            """)
+
+
+
+
 
 app = FastAPI()
 
