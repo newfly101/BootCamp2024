@@ -10,6 +10,7 @@ function checkPassword(formData) {
     if (formData.get("password") === formData.get("password-check")) {
         checkPassword.innerText = "비밀번호가 일치합니다.";
         checkPassword.style.color = 'blue';
+        window.location.pathname = "/login.html";
         return true;
     } else {
         checkPassword.innerText = "비밀번호가 다릅니다.";
