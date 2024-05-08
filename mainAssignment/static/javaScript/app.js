@@ -29,7 +29,7 @@ async function chat(msg) {
         }),
     });
     const jsonRes = await res.json();
-    // console.log(jsonRes);
+    console.log(jsonRes);
     readMsg();
 }
 

@@ -90,6 +90,7 @@ async def read_chats():
 @app.post("/chat")
 async def create_chat(chat: Chat):
     chats.append(chat)
+    return chat
 
 
 # 루트 경로에 우리의 static 파일에 있는 html을 호스팅 해준다.
