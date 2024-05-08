@@ -5,8 +5,8 @@ function checkPassword(formData) {
     const checkPassword = document.querySelector('#checkPassword');
     checkPassword.innerText = '';
     info.innerText = '';
-    console.log("password",formData.get("password"));
-    console.log("password",formData.get("password-check"));
+    // console.log("password",formData.get("password"));
+    // console.log("password",formData.get("password-check"));
     if (formData.get("password") === formData.get("password-check")) {
         checkPassword.innerText = "비밀번호가 일치합니다.";
         checkPassword.style.color = 'blue';
@@ -24,10 +24,10 @@ const handleSubmitForm = async (event) => {
     const boolean = checkPassword(formData);
     if ( boolean === true ) {
         const sha256Password = sha256(formData.get("password"));
-        console.log("암호화전 : ",formData.get("password"));
+        // console.log("암호화전 : ",formData.get("password"));
 
         formData.set("password", sha256Password);
-        console.log("암호화후 : ",formData.get("password"));
+        // console.log("암호화후 : ",formData.get("password"));
 
         const res = await fetch("/signup", {
             method: 'POST',
@@ -37,7 +37,7 @@ const handleSubmitForm = async (event) => {
         const jsonRes = res.json();
         // console.log(jsonRes);
         jsonRes.then(result => {
-            console.log(result);
+            // console.log(result);
             if (result.status === '200') {
                 info.innerText = '회원가입에 성공했습니다.';
                 info.style.color = 'blue';

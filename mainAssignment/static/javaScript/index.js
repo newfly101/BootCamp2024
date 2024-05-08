@@ -19,10 +19,10 @@ const calcTime = (timestamp) => {
 // image만 불러와서 blob으로 변경하는 함수
 async function renderImage(obj) {
     const res = await fetch(`/images/${obj.id}`);
-    console.log("res : ", res);
+    // console.log("res : ", res);
     const blob = await res.blob();
-    console.log("blob : ", blob);
-    console.log("URL.createObjectURL(blob) : ", URL.createObjectURL(blob));
+    // console.log("blob : ", blob);
+    // console.log("URL.createObjectURL(blob) : ", URL.createObjectURL(blob));
     return URL.createObjectURL(blob);
 
 }

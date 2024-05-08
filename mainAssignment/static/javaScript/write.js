@@ -11,7 +11,7 @@ async function createNewWrite() {
         });
         const jsonRes = await res.json();
         if (jsonRes === '200') {
-            console.log("글쓰기 생성 : ", jsonRes);
+            // console.log("글쓰기 생성 : ", jsonRes);
             window.location.pathname = "/";
         }
     } catch (error) {
