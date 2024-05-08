@@ -21,16 +21,25 @@ chats = []
 # main.py를 실행할 때 DB에 TABLE이 없는 경우 생성해 주는 코드
 # IF NOT EXISTS 조건문을 집어넣음
 cur.execute(f"""
-            CREATE TABLE IF NOT EXISTS items (
-                id INTEGER PRIMARY KEY,
-                title TEXT NOT NULL,
-                image BLOB,
-                price INTEGER NOT NULL,
-                description TEXT,
-                place TEXT NOT NULL,
-                createdTime INTEGER NOT NULL
-            );
-            """)
+    CREATE TABLE IF NOT EXISTS items (
+        id INTEGER PRIMARY KEY,
+        title TEXT NOT NULL,
+        image BLOB,
+        price INTEGER NOT NULL,
+        description TEXT,
+        place TEXT NOT NULL,
+        createdTime INTEGER NOT NULL
+    );
+""")
+
+cur.execute(f"""
+    CREATE TABLE IF NOT EXISTS users (
+        userId TEXT PRIMARY KEY NOT NULL,
+        username TEXT NOT NULL,
+        password TEXT NOT NULL,
+        email TEXT NOT NULL
+    );
+""")
 
 app = FastAPI()
 
@@ -73,17 +82,26 @@ async def get_image(item_id):
     """).fetchone()[0]
     return Response(content=bytes.fromhex(image_bytes), media_type="image/*")
 
-
-@app.post('/signup')
-async def signup(id:Annotated[str,Form()],
-           password:Annotated[str,Form()]):
-    return {"status":'200', "message": "정상 save", "id": id, "password": password}
-
-
 # chat 갖고오기
 @app.get("/chat")
 async def read_chats():
     return chats
+
+
+# 회원가입 시 DB에 값 저장
+@app.post('/signup')
+async def signup(name:Annotated[str,Form()],
+                 id:Annotated[str,Form()],
+                 password:Annotated[str,Form()],
+                 email:Annotated[str,Form()]):
+    cur = connect.cursor()
+    cur.execute(f"""
+                INSERT INTO users (userId, username, password, email)
+                VALUES ('{id}', '{name}', '{password}', '{email}');
+                """)
+    connect.commit()
+    return {"status":'200', "message": "정상 save", "name":name, "id": id, "password": password, "email": email}
+
 
 
 # chat 서버 통신
