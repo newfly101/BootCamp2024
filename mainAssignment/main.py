@@ -79,6 +79,15 @@ async def get_image(item_id):
     return Response(content=bytes.fromhex(image_bytes), media_type="image/*")
 
 
+
+@app.post('/signup')
+def signup(id:Annotated[str,Form()],
+           password:Annotated[str,Form()]):
+    print(id, password);
+    return '200'
+
+
+
 # chat 갖고오기
 @app.get("/chat")
 async def read_chats():
@@ -89,7 +98,6 @@ async def read_chats():
 @app.post("/chat")
 async def create_chat(chat: Chat):
     chats.append(chat)
-    return {"message": "Chat created", "chats": chats}
 
 
 # 루트 경로에 우리의 static 파일에 있는 html을 호스팅 해준다.
