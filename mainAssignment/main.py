@@ -116,8 +116,10 @@ async def signup(name:Annotated[str,Form()],
 @manager.user_loader()
 def query_user(data):
     WHERE_STATEMENTS = f'userId="{data}"'
+    print(f"@@@@2@@@: {data}")
     if isinstance(data, dict):
         WHERE_STATEMENTS = f'''userId="{data["id"]}"'''
+        print(f"@@@@3@@@: {data["id"]}")
     connect.row_factory = sqlite3.Row
     cur = connect.cursor()
     user = cur.execute(f"""
@@ -134,8 +136,7 @@ async def login(userId: Annotated[str, Form()],
     # 사용하지 않으면 tuple 형식으로 ('id', 'image', 'title', 'pric' ... ) 으로 가져옴
     # 422 Entity Error 발생 확률이 높음
     user = query_user(userId)  # 사용자 목록 가져오기
-    for users in user:
-        print(users) # .fetchall()[0] 을 했기 때문에 있었던 구문
+    print(userId)
     if user == []:
         return {"status":'500', "user":user}
     elif user['password'] != password:

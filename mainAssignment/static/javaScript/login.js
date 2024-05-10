@@ -14,7 +14,6 @@ async function getItemsAuth() {
             },
         });
         const data = await res.json();
-        // 여기서 오류 뱉음 해결 불가 상태
         console.log("@@@@@@@@@@@@@@@@@@",data);
     });
 
