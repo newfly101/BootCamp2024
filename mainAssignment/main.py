@@ -137,7 +137,16 @@ async def login(userId: Annotated[str, Form()],
         # raise InvalidCredentialsException # 401을 내려주는 것
         return {"status":'401', "user":user}
 
-    return user
+    access_token = manager.create_access_token(
+        data={
+            'userid':user[0]['userId'],
+            'password':user[0]['password'],
+            'name':user[0]['username'],
+            'email':user[0]['email']
+        }
+    )
+
+    return {"access_token":access_token, "user":user }
 
 
 

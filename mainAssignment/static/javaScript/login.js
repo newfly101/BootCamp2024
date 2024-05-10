@@ -18,10 +18,13 @@ const handleSubmitLogin = async (event) => {
     });
 
     const jsonRes = res.json();
+    // console.log("access Tocken : ", jsonRes);
 
     jsonRes.then(res => {
+        console.log(res);
         if (res.status === '200') {
             console.log("로그인에 성공했습니다.",res);
+            window.location.pathname = "/";
         } else if (res.status === '500') {
             console.log("등록된 사용자가 없습니다.");
         } else if (res.status === '401') {
