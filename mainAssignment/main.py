@@ -117,7 +117,7 @@ def query_user(id):
     cur = connect.cursor()
     user = cur.execute(f"""
         SELECT * FROM users WHERE userId='{id}';
-    """).fetchall()
+    """).fetchone()
     return user
 
 
@@ -133,18 +133,16 @@ async def login(userId: Annotated[str, Form()],
         print(users)
     if user == []:
         return {"status":'500', "user":user}
-        # raise InvalidCredentialsException
-    elif user[0]['password'] != password:
-        # raise InvalidCredentialsException # 401을 내려주는 것
+    elif user['password'] != password:
         return {"status":'401', "user":user}
 
     access_token = manager.create_access_token(
         data={
             "sub": {
-                'userid':user[0]['userId'],
-                'password':user[0]['password'],
-                'name':user[0]['username'],
-                'email':user[0]['email']
+                'userid':user['userId'],
+                'password':user['password'],
+                'name':user['username'],
+                'email':user['email']
             }
         }
     )

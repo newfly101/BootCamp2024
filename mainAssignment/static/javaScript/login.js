@@ -1,21 +1,23 @@
 const form = document.querySelector('#login-form');
 const info = document.querySelector("#info");
 
-// async function getItemsAuth(access_token) {
-//     const addBtn = document.createElement("button");
-//     addBtn.innerText = "get";
-//     addBtn.addEventListener("click", async (event) => {
-//         const res = await fetch("/items", {
-//             headers: {
-//                 'Authorization': `Bearer ${access_token}`,
-//             },
-//         });
-//         const data = await res.json();
-//         // 여기서 오류 뱉음 해결 불가 상태
-//         console.log("@@@@@@@@@@@@@@@@@@",data);
-//     });
-//     info.appendChild(addBtn);
-// }
+async function getItemsAuth(access_token) {
+    const addBtn = document.createElement("button");
+    addBtn.innerText = "get";
+    info.appendChild(addBtn);
+
+    // addBtn.addEventListener("click", async (event) => {
+    //     const res = await fetch("/items", {
+    //         headers: {
+    //             'Authorization': `Bearer ${access_token}`,
+    //         },
+    //     });
+    //     const data = await res.json();
+    //     // 여기서 오류 뱉음 해결 불가 상태
+    //     console.log("@@@@@@@@@@@@@@@@@@",data);
+    // });
+
+}
 
 
 const handleSubmitLogin = async (event) => {
@@ -46,7 +48,7 @@ const handleSubmitLogin = async (event) => {
             access_token = res.access_token;
             // console.log("##########:", access_token);
             info.innerText = '로그인 되었습니다.';
-            // getItemsAuth(access_token); /// <<<<<<<<<<<<<<<<<여기서 오류남
+            getItemsAuth(access_token); /// <<<<<<<<<<<<<<<<<여기서 오류남
             // window.location.pathname = "/";
         }
     });
