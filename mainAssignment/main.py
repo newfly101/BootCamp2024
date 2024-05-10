@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
+from fastapi_login import LoginManager
 from typing import Annotated
 import sqlite3
 
@@ -42,6 +43,10 @@ cur.execute(f"""
 """)
 
 app = FastAPI()
+
+# FastAPI-login
+SECRET = "super-coding"
+manager = LoginManager(SECRET,"/login")
 
 @app.post("/items")
 async def create_item(image:UploadFile,
@@ -102,6 +107,22 @@ async def signup(name:Annotated[str,Form()],
     connect.commit()
     return {"status":'200', "message": "정상 save", "name":name, "id": id, "password": password, "email": email}
 
+
+# 유저가 존재하는지 조회
+@manager.user_loader()
+def query_user(id):
+    user = cur.execute(f"""
+        SELECT * FROM users WHERE userId='{id}';
+    """).fetchall()
+    return user
+
+
+@app.post('/login')
+async def login(userId:Annotated[str,Form()],
+                password:Annotated[str,Form()]):
+    user = query_user(userId)
+    print(user)
+    return {"status":'200', "user":user}
 
 
 # chat 서버 통신

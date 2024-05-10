@@ -37,10 +37,10 @@
     </header>
 
     <main>
-        <form method="POST">
+        <form id="login-form" method="POST">
             <div>
-                <label for="user-id">id</label>
-                <input id="user-id" name="user-id" type="text" placeholder="아이디 입력" required />
+                <label for="userId">id</label>
+                <input id="userId" name="userId" type="text" placeholder="아이디 입력" required />
             </div>
             <div>
                 <label for="password">password</label>
@@ -108,5 +108,7 @@
             </div>
         </div>
     </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha256/0.9.0/sha256.min.js"></script>
+    <script src="../javaScript/login.js"></script>
 </body>
 </html>
