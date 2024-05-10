@@ -149,7 +149,7 @@ async def login(userId: Annotated[str, Form()],
         }
     )
 
-    return access_token
+    return {"access_token":access_token, "user":user, "status":200}
 
 
 
