@@ -1,5 +1,5 @@
 # 서버 구현하기
-from fastapi import FastAPI, UploadFile, Form, Response
+from fastapi import FastAPI, UploadFile, Form, Response, Depends
 from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
@@ -67,8 +67,9 @@ async def create_item(image:UploadFile,
     connect.commit()
     return '200'
 
+# 유저가 인증된 상태에서만 item을 갖고 오게 함
 @app.get("/items")
-async def get_items():
+async def get_items(user=Depends(manager)):
     # column 명도 같이 가져옴
     connect.row_factory = sqlite3.Row
     cur = connect.cursor()
@@ -139,14 +140,16 @@ async def login(userId: Annotated[str, Form()],
 
     access_token = manager.create_access_token(
         data={
-            'userid':user[0]['userId'],
-            'password':user[0]['password'],
-            'name':user[0]['username'],
-            'email':user[0]['email']
+            "sub": {
+                'userid':user[0]['userId'],
+                'password':user[0]['password'],
+                'name':user[0]['username'],
+                'email':user[0]['email']
+            }
         }
     )
 
-    return {"access_token":access_token, "user":user }
+    return access_token
 
 
 
