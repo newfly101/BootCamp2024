@@ -75,8 +75,12 @@ const renderData = (data) => {
 
 const fetchList = async () => {
     const res = await fetch('/items');
+    if (res.status === 401) {
+        alert("로그인이 필요합니다.")
+        window.location.pathname = "/html/login.html";
+        return;
+    }
     const data = await res.json();
-
     // console.log(data);
     renderData(data);
 };
