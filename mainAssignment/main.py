@@ -5,6 +5,7 @@ from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel
 from fastapi.staticfiles import StaticFiles
 from fastapi_login import LoginManager
+from fastapi_login.exceptions import InvalidCredentialsException
 from typing import Annotated
 import sqlite3
 
@@ -111,6 +112,8 @@ async def signup(name:Annotated[str,Form()],
 # 유저가 존재하는지 조회
 @manager.user_loader()
 def query_user(id):
+    connect.row_factory = sqlite3.Row
+    cur = connect.cursor()
     user = cur.execute(f"""
         SELECT * FROM users WHERE userId='{id}';
     """).fetchall()
@@ -118,11 +121,28 @@ def query_user(id):
 
 
 @app.post('/login')
-async def login(userId:Annotated[str,Form()],
-                password:Annotated[str,Form()]):
-    user = query_user(userId)
-    print(user)
-    return {"status":'200', "user":user}
+async def login(userId: Annotated[str, Form()],
+                password: Annotated[str, Form()]):
+    # password를 알기 위해서 column도 가져와야 한다. => query_user 에 추가하기
+    # 사용하지 않으면 tuple 형식으로 ('id', 'image', 'title', 'pric' ... ) 으로 가져옴
+    # 422 Entity Error 발생 확률이 높음
+    user = query_user(userId)  # 사용자 목록 가져오기
+    # print("password만 출력 : ",user[0]['password'])
+    for users in user:
+        print(users)
+    if user == []:
+        return {"status":'500', "user":user}
+        # raise InvalidCredentialsException
+    elif user[0]['password'] != password:
+        # raise InvalidCredentialsException # 401을 내려주는 것
+        return {"status":'401', "user":user}
+
+    return user
+
+
+
+
+
 
 
 # chat 서버 통신
