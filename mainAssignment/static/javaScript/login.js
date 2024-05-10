@@ -7,7 +7,7 @@ async function getItemsAuth() {
     addBtn.innerText = "get";
     info.appendChild(addBtn);
 
-    addBtn.addEventListener("click", async (event) => {
+    addBtn.addEventListener("click", async () => {
         const res = await fetch("/items", {
             headers: {
                 Authorization: `Bearer ${access_token}`,
