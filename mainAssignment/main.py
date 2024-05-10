@@ -55,7 +55,9 @@ async def create_item(image:UploadFile,
                 price:Annotated[int,Form()],
                 description:Annotated[str,Form()],
                 place:Annotated[str,Form()],
-                createdTime:Annotated[str,Form()]):
+                createdTime:Annotated[str,Form()],
+                user=Depends(manager)
+                      ):
     print(image,title,price,description,place)
 
     # 이미지를 읽는 시간을 가짐
@@ -112,13 +114,17 @@ async def signup(name:Annotated[str,Form()],
 
 # 유저가 존재하는지 조회
 @manager.user_loader()
-def query_user(id):
+def query_user(data):
+    WHERE_STATEMENTS = f'userId="{data}"'
+    if isinstance(data, dict):
+        WHERE_STATEMENTS = f'''userId="{data["id"]}"'''
     connect.row_factory = sqlite3.Row
     cur = connect.cursor()
     user = cur.execute(f"""
-        SELECT * FROM users WHERE userId='{id}';
+        SELECT * FROM users WHERE {WHERE_STATEMENTS};
     """).fetchone()
     return user
+
 
 
 @app.post('/login')
@@ -128,9 +134,8 @@ async def login(userId: Annotated[str, Form()],
     # 사용하지 않으면 tuple 형식으로 ('id', 'image', 'title', 'pric' ... ) 으로 가져옴
     # 422 Entity Error 발생 확률이 높음
     user = query_user(userId)  # 사용자 목록 가져오기
-    # print("password만 출력 : ",user[0]['password'])
     for users in user:
-        print(users)
+        print(users) # .fetchall()[0] 을 했기 때문에 있었던 구문
     if user == []:
         return {"status":'500', "user":user}
     elif user['password'] != password:
@@ -139,7 +144,7 @@ async def login(userId: Annotated[str, Form()],
     access_token = manager.create_access_token(
         data={
             "sub": {
-                'userid':user['userId'],
+                'id':user['userId'],
                 'password':user['password'],
                 'name':user['username'],
                 'email':user['email']
