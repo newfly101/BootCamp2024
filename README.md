@@ -1,10 +1,12 @@
+# Carrot Market Clone
+
+## 당근 마켓 클론 작업 IDE 환경
+
+[intelliJ](https://www.jetbrains.com/ko-kr/idea/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+
 # Svelte + Vite
 
 This template should help get you started developing with Svelte in Vite.
-
-## Recommended IDE Setup
-
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
 
 ## Need an official Svelte framework?
 
