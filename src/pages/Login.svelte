@@ -1,3 +1,10 @@
+<script>
+    import Header from "../components/Header.svelte";
+    import Footer from "../components/Footer.svelte";
+</script>
+
+<Header />
+
 <main>
     <form id="login-form" method="POST">
         <div>
@@ -15,3 +22,5 @@
 
     <div id="info"></div>
 </main>
+
+<Footer />

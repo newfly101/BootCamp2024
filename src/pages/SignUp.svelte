@@ -1,3 +1,10 @@
+<script>
+    import Header from "../components/Header.svelte";
+    import Footer from "../components/Footer.svelte";
+</script>
+
+<Header />
+
 <main>
     <form id="sign-up-form" method="POST" action="/signup">
         <div>
@@ -32,3 +39,5 @@
         </div>
     </form>
 </main>
+
+<Footer />

@@ -1,5 +1,7 @@
 <script>
     import { getDatabase, ref, set, push } from "firebase/database";
+    import Footer from "../components/Footer.svelte";
+    import Header from "../components/Header.svelte";
 
     let title
     let price
@@ -26,6 +28,8 @@
         });
     }
 </script>
+
+<Header />
 
 <main>
     <button on:click={() => console.log(title, price, description, place)}>버튼</button>
@@ -55,4 +59,6 @@
         </div>
     </form>
 </main>
+
+<Footer />
 

@@ -1,3 +1,10 @@
+<script>
+    import Header from "../components/Header.svelte";
+    import Footer from "../components/Footer.svelte";
+</script>
+
+<Header />
+
 <main>
     <!--        default setting-->
     <div class="chat-channel">
@@ -30,6 +37,7 @@
     </div>
 </main>
 
+<Footer />
 
 <style>
     @import '../css/chat.css';

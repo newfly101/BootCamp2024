@@ -1,9 +1,9 @@
 <script>
-    import ViewHeader from './third/Header.svelte';
-    import ViewFooter from './third/Footer.svelte';
+    import Footer from "../components/Footer.svelte";
+    import Header from "../components/Header.svelte";
 </script>
 
-<ViewHeader />
+<Header />
 
 <main>
     <!--        default setting-->
@@ -20,7 +20,7 @@
     <a class="write-btn" href="/#/write">+글쓰기</a>
 </main>
 
-<ViewFooter />
+<Footer />
 
 <style>
     /*@import '../css/reset.css';*/

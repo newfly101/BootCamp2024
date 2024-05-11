@@ -2,7 +2,7 @@
     <div class="footer-block">
         <div class="footer-icons">
             <div class="footer-icons__img">
-                <a href="/public#">
+                <a href="/">
                     <img src="/assets/footer/home-select.svg" alt="home" />
                 </a>
             </div>
