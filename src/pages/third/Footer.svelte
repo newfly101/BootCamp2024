@@ -1,4 +1,4 @@
-<footer>
+<!-- +Footer.svelte -->
     <div class="footer-block">
         <div class="footer-icons">
             <div class="footer-icons__img">
@@ -48,7 +48,4 @@
                 나의당근
             </div>
         </div>
-
     </div>
-
-</footer>

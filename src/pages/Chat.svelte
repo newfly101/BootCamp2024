@@ -1,3 +1,10 @@
+<!--<script>-->
+<!--    import ViewHeader from "./third/Header.svelte";-->
+<!--    import ViewFooter from "./third/Footer.svelte";-->
+<!--</script>-->
+
+<!--<ViewHeader />-->
+
 <main>
     <!--        default setting-->
     <div class="chat-channel">
@@ -29,3 +36,5 @@
         </form>
     </div>
 </main>
+
+<!--<ViewFooter />-->

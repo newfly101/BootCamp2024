@@ -11,7 +11,7 @@ function checkPassword(formData) {
         checkPassword.innerText = "비밀번호가 일치합니다.";
         checkPassword.style.color = 'blue';
         alert("회원가입에 성공했습니다.");
-        window.location.pathname = "../html/login.html";
+        window.location.pathname = "../../web/static/html/login.html";
         return true;
     } else {
         checkPassword.innerText = "비밀번호가 다릅니다.";
