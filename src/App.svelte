@@ -1,18 +1,17 @@
 <!--  svelte-spa-router -->
 
 <script>
+  import Main from "./pages/Main.svelte";
+  import Login from "./pages/Login.svelte";
+  import SignUp from "./pages/SignUp.svelte";
+  import Write from "./pages/Write.svelte";
+
   const routes = {
-    '/': Home,
+    '/': Main,
+    '/login': Login,
+    '/signup': SignUp,
+    '/write': Write
 
-    // Using named parameters, with last being optional
-    '/author/:first/:last?': Author,
-
-    // Wildcard parameter
-    '/book/*': Book,
-
-    // Catch-all
-    // This is optional, but if present it must be the last
-    '*': NotFound,
   }
 </script>
 
