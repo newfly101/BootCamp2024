@@ -7,23 +7,22 @@
   import Login from "./pages/Login.svelte";
   import SignUp from "./pages/SignUp.svelte";
   import Write from "./pages/Write.svelte";
+  import NotFound from "./pages/NotFound.svelte";
+  import Chat from "./pages/Chat.svelte";
 
   const routes = {
     '/': Main,
     '/login': Login,
     '/signup': SignUp,
-    '/write': Write
+    '/write': Write,
+    '/chat': Chat,
+    '*': NotFound
   }
 </script>
 
-<body>
-  <Router {routes} />
-
-  <main>
-    <h1>Vite + Svelte</h1>
-  </main>
-
-</body>
+<main>
+  <Router routes={routes} />
+</main>
 
 
 <style>
