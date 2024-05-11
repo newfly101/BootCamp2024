@@ -20,7 +20,7 @@
 
     function writeItemsDatabase() {
         const db = getDatabase();
-        push(ref(db, 'items/' + title), {
+        push(ref(db, 'items/'), {
             title:title,
             price:price,
             description:description,

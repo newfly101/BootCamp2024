@@ -9,10 +9,15 @@
     $: items = [];
     const db = getDatabase();
     const itemsList = ref(db, 'items/');
+
+
+    // 화면이 onMount 되었을 때 가끔 render이 안되는 경우가 발생하기 때문에 선언해주는 것
+
+
     onValue(itemsList, (snapshot) => {
         const data = snapshot.val();
         items = Object.values(data);
-        // console.log(Object.values(data));
+        console.log(items);
     });
 </script>
 
@@ -20,16 +25,19 @@
 
 <main>
     <!--        default setting-->
+        {#each items as item}
             <div class="item-list">
                 <div class="item-list__img">
                     <img src="/assets/main/image.svg" alt="item-list" />
                 </div>
                 <div class="item-list__info">
-                    <div class="item-list__info-title">게이밍 pc 팝니다</div>
-                    <div class="item-list__info-meta">역삼동 19초 전</div>
-                    <div class="item-list__info-price">100만원</div>
+                    <div class="item-list__info-title">{item.title}</div>
+                    <div class="item-list__info-meta">{item.place} 19초 전</div>
+                    <div class="item-list__info-price">{item.price}</div>
+                    <div class="item-list__info-description">{item.description}</div>
                 </div>
             </div>
+        {/each}
     <a class="write-btn" href="/#/write">+글쓰기</a>
 </main>
 
