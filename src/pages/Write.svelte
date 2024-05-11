@@ -1,5 +1,6 @@
 <script>
     import { getDatabase, ref, set, push } from "firebase/database";
+    import { getStorage, ref as refImage,uploadBytes } from "firebase/storage";
     import Footer from "../components/Footer.svelte";
     import Header from "../components/Header.svelte";
 
@@ -7,6 +8,22 @@
     let price
     let description
     let place
+
+    // Storage image upload용
+    let files
+    $: if (files) console.log(files);
+
+
+    const storage = getStorage();
+    const storageRef = refImage(storage, "/imgs");
+
+    // 'file' comes from the Blob or File API
+    // uploadBytes(storageRef, file).then((snapshot) => {
+    //     console.log('Uploaded a blob or file!');
+    // });
+    
+
+
 
     function writeUserDatabase(userId, name, email) {
         event.preventDefault();
@@ -34,10 +51,10 @@
 <main>
     <button on:click={() => console.log(title, price, description, place)}>버튼</button>
     <form id="write-form" on:submit|preventDefault={writeItemsDatabase}>
-<!--        <div>-->
-<!--            <label for="image">이미지</label>-->
-<!--            <input type="file" id="image" name="image"/>-->
-<!--        </div>-->
+        <div>
+            <label for="image">이미지</label>
+            <input type="file" id="image" bind:files={files} name="image"/>
+        </div>
         <div>
             <label for="title">제목</label>
             <input type="text" id="title" name="title" bind:value={title} required/>
