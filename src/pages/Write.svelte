@@ -1,6 +1,6 @@
 <script>
     import { getDatabase, ref, set, push } from "firebase/database";
-    import { getStorage, ref as refImage,uploadBytes } from "firebase/storage";
+    import { getStorage, ref as refImage,uploadBytes, getDownloadURL } from "firebase/storage";
     import Footer from "../components/Footer.svelte";
     import Header from "../components/Header.svelte";
 
@@ -15,42 +15,57 @@
 
 
     const storage = getStorage();
-    const storageRef = refImage(storage, "/imgs");
+    const db = getDatabase();
+    // const storageRef = refImage(storage, "/imgs");
 
     // 'file' comes from the Blob or File API
     // uploadBytes(storageRef, file).then((snapshot) => {
     //     console.log('Uploaded a blob or file!');
     // });
-    
 
-
-
-    function writeUserDatabase(userId, name, email) {
-        event.preventDefault();
-        const db = getDatabase();
-        set(ref(db, 'users/' + userId), {
-            username: name,
-            email: email,
-        });
-        console.log(`userId:${userId}, name:${name}, email:${email}`);
-    }
-
-    function writeItemsDatabase() {
-        const db = getDatabase();
+    function writeItemsDatabase(fileURL) {
         push(ref(db, 'items/'), {
+            image:fileURL,
             title:title,
             price:price,
             description:description,
             place:place,
         });
+        alert("글쓰기가 완료 되었습니다.");
+        window.location.hash = "/";
     }
+
+    const uploadFile = async () => {
+        const file = files[0];
+        const res = await uploadBytes(refImage(storage, file.name), file);
+        console.log("파일 업로드 ", res);
+
+        const fileURL = await getDownloadURL(refImage(storage, file.name));
+        console.log("파일 다운로드 ", fileURL);
+        return fileURL;
+    }
+
+    const handleSubmit = async () => {
+        const fileURL = await uploadFile();
+        writeItemsDatabase(fileURL);
+    }
+
+    // function writeUserDatabase(userId, name, email) {
+    //     event.preventDefault();
+    //     set(ref(db, 'users/' + userId), {
+    //         username: name,
+    //         email: email,
+    //     });
+    //     console.log(`userId:${userId}, name:${name}, email:${email}`);
+    // }
+
 </script>
 
 <Header />
 
 <main>
-    <button on:click={() => console.log(title, price, description, place)}>버튼</button>
-    <form id="write-form" on:submit|preventDefault={writeItemsDatabase}>
+<!--    <button on:click={() => console.log(title, price, description, place)}>버튼</button>-->
+    <form id="write-form" on:submit|preventDefault={handleSubmit}>
         <div>
             <label for="image">이미지</label>
             <input type="file" id="image" bind:files={files} name="image"/>

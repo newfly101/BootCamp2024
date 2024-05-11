@@ -34,7 +34,7 @@
         {#each items as item}
             <div class="item-list">
                 <div class="item-list__img">
-                    <img src="/assets/main/image.svg" alt="item-list" />
+                    <img src={item.image} alt="item-list" />
                 </div>
                 <div class="item-list__info">
                     <div class="item-list__info-title">{item.title}</div>
