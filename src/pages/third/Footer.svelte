@@ -3,7 +3,7 @@
         <div class="footer-icons">
             <div class="footer-icons__img">
                 <a href="/#">
-                    <img src="../../../public/assets/footer/home-select.svg" alt="home" />
+                    <img src="/assets/footer/home-select.svg" alt="home" />
                 </a>
             </div>
             <div class="footer-icons__desc">
@@ -13,7 +13,7 @@
 
         <div class="footer-icons">
             <div class="footer-icons__img">
-                <img src="../../../public/assets/footer/country-normal.svg" alt="country" />
+                <img src="/assets/footer/country-normal.svg" alt="country" />
             </div>
             <div class="footer-icons__desc">
                 동네생활
@@ -22,7 +22,7 @@
 
         <div class="footer-icons">
             <div class="footer-icons__img">
-                <img src="../../../public/assets/footer/location-normal.svg" alt="location" />
+                <img src="/assets/footer/location-normal.svg" alt="location" />
             </div>
             <div class="footer-icons__desc">
                 내 근처
@@ -32,7 +32,7 @@
         <div class="footer-icons" id="chatting-tap">
             <div class="footer-icons__img">
                 <a href="/#/chat">
-                    <img src="../../../public/assets/footer/chat-normal.svg" alt="chat" />
+                    <img src="/assets/footer/chat-normal.svg" alt="chat" />
                 </a>
             </div>
             <div class="footer-icons__desc">
@@ -43,7 +43,7 @@
         <div class="footer-icons">
             <div class="footer-icons__img">
                 <a href="/#/signup">
-                    <img src="../../../public/assets/footer/user-normal.svg" alt="user" />
+                    <img src="/assets/footer/user-normal.svg" alt="user" />
                 </a>
             </div>
             <div class="footer-icons__desc">

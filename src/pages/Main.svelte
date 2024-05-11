@@ -9,7 +9,7 @@
     <!--        default setting-->
             <div class="item-list">
                 <div class="item-list__img">
-                    <img src="../../public/assets/main/image.svg" alt="item-list" />
+                    <img src="/assets/main/image.svg" alt="item-list" />
                 </div>
                 <div class="item-list__info">
                     <div class="item-list__info-title">게이밍 pc 팝니다</div>
@@ -23,6 +23,6 @@
 <ViewFooter />
 
 <style>
-    @import '../css/reset.css';
+    /*@import '../css/reset.css';*/
     @import '../css/main.css';
 </style>
