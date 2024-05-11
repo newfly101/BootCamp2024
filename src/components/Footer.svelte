@@ -2,7 +2,7 @@
     <div class="footer-block">
         <div class="footer-icons">
             <div class="footer-icons__img">
-                <a href="/#">
+                <a href="/public#">
                     <img src="/assets/footer/home-select.svg" alt="home" />
                 </a>
             </div>
@@ -31,7 +31,7 @@
 
         <div class="footer-icons" id="chatting-tap">
             <div class="footer-icons__img">
-                <a href="/#/chat">
+                <a href="/public#/chat">
                     <img src="/assets/footer/chat-normal.svg" alt="chat" />
                 </a>
             </div>
@@ -42,7 +42,7 @@
 
         <div class="footer-icons">
             <div class="footer-icons__img">
-                <a href="/#/signup">
+                <a href="/public#/signup">
                     <img src="/assets/footer/user-normal.svg" alt="user" />
                 </a>
             </div>
@@ -53,5 +53,5 @@
     </div>
 
 <style>
-    @import '../../css/footer.css';
+    @import '../css/footer.css';
 </style>
