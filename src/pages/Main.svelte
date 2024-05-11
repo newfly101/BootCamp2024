@@ -1,6 +1,19 @@
 <script>
     import Footer from "../components/Footer.svelte";
     import Header from "../components/Header.svelte";
+
+    import { getDatabase, ref, onValue } from "firebase/database";
+
+    // 반응형으로 rendering 해주는 것을 선언해줄때
+    // $: 로 사용
+    $: items = [];
+    const db = getDatabase();
+    const itemsList = ref(db, 'items/');
+    onValue(itemsList, (snapshot) => {
+        const data = snapshot.val();
+        items = Object.values(data);
+        // console.log(Object.values(data));
+    });
 </script>
 
 <Header />
