@@ -1,10 +1,3 @@
-<!--<script>-->
-<!--    import ViewHeader from "./third/Header.svelte";-->
-<!--    import ViewFooter from "./third/Footer.svelte";-->
-<!--</script>-->
-
-<!--<ViewHeader />-->
-
 <main>
     <!--        default setting-->
     <div class="chat-channel">
@@ -18,7 +11,7 @@
             <input class="msg-bar-plus"
                    type="image"
                    name="chatFile"
-                   src="../asset/main/chat/plus.svg"
+                   src="../../public/assets/main/chat/plus.svg"
                    id="chat-file"
                    alt="plus" />
             <label for="send-message"> </label>
@@ -30,11 +23,14 @@
             <input class="msg-bar-submit"
                    type="image"
                    name="submit"
-                   src="../asset/main/chat/sendMsg.svg"
+                   src="../../public/assets/main/chat/sendMsg.svg"
                    id="chat-submit"
                    alt="submit" />
         </form>
     </div>
 </main>
 
-<!--<ViewFooter />-->
+
+<style>
+    @import '../css/chat.css';
+</style>

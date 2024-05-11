@@ -9,7 +9,7 @@
     <!--        default setting-->
             <div class="item-list">
                 <div class="item-list__img">
-                    <img src="asset/main/image.svg" alt="image" />
+                    <img src="../../public/assets/main/image.svg" alt="item-list" />
                 </div>
                 <div class="item-list__info">
                     <div class="item-list__info-title">게이밍 pc 팝니다</div>
@@ -17,7 +17,12 @@
                     <div class="item-list__info-price">100만원</div>
                 </div>
             </div>
-    <a class="write-btn" href="html/write.html">+글쓰기</a>
+    <a class="write-btn" href="/#/write">+글쓰기</a>
 </main>
 
 <ViewFooter />
+
+<style>
+    @import '../css/reset.css';
+    @import '../css/main.css';
+</style>
