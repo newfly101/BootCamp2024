@@ -1,5 +1,5 @@
 <script>
-    import { getDatabase, ref, set } from "firebase/database";
+    import { getDatabase, ref, set, push } from "firebase/database";
 
     let title
     let price
@@ -15,11 +15,21 @@
         });
         console.log(`userId:${userId}, name:${name}, email:${email}`);
     }
+
+    function writeItemsDatabase(event) {
+        const db = getDatabase();
+        push(ref(db, 'items/' + title), {
+            title:title,
+            price:price,
+            description:description,
+            place:place,
+        });
+    }
 </script>
 
 <main>
     <button on:click={() => console.log(title, price, description, place)}>버튼</button>
-    <form id="write-form">
+    <form id="write-form" on:submit|preventDefault={writeItemsDatabase}>
 <!--        <div>-->
 <!--            <label for="image">이미지</label>-->
 <!--            <input type="file" id="image" name="image"/>-->
@@ -41,7 +51,7 @@
             <input type="text" id="place"  name="place" bind:value={place}/>
         </div>
         <div>
-            <button type="submit" id="write-submit-button" on:click={(event) => writeUserDatabase('aaa','aaa','aaa@naver.com')}>제출</button>
+            <button type="submit" id="write-submit-button" >제출</button>
         </div>
     </form>
 </main>
