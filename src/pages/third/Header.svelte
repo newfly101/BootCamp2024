@@ -1,7 +1,23 @@
 <!-- +Header.svelte -->
+<script>
+    let hour = new Date().getHours().toString().padStart(2,'0');
+    let min = new Date().getMinutes().toString().padStart(2,'0');
+    let sec = new Date().getSeconds().toString().padStart(2,'0');
+    function getTime() {
+        const thisTime = new Date();
+        hour = thisTime.getHours().toString().padStart(2,'0');
+        min = thisTime.getMinutes().toString().padStart(2,'0');
+        sec = thisTime.getSeconds().toString().padStart(2,'0');
+    }
+
+    setInterval(getTime, 1000);
+
+
+</script>
+
 
 <div class="info-bar">
-    <div class="info-bar__time">20:55</div>
+    <div class="info-bar__time">{hour}:{min}:{sec}</div>
     <div class="info-bar__icons">
         <img src="../../../public/assets/header/chart-bar.svg" alt="chart-bar" />
         <img src="../../../public/assets/header/wi-fi.svg" alt="wi-fi" />
