@@ -2,6 +2,7 @@
 
 <script>
   // 모듈 방식으로 페이지를 삽입해주는 방식
+  import Router from 'svelte-spa-router'
   import Main from "./pages/Main.svelte";
   import Login from "./pages/Login.svelte";
   import SignUp from "./pages/SignUp.svelte";
@@ -12,13 +13,18 @@
     '/login': Login,
     '/signup': SignUp,
     '/write': Write
-
   }
 </script>
 
-<main>
-  <h1>Vite + Svelte</h1>
-</main>
+<body>
+  <Router {routes} />
+
+  <main>
+    <h1>Vite + Svelte</h1>
+  </main>
+
+</body>
+
 
 <style>
 
