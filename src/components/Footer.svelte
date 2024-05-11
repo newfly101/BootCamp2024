@@ -1,9 +1,26 @@
+<script>
+    // 전달 받을 값
+    export let urlLocation;
+
+    const moveToHome = () => {
+        window.location.hash = "/";
+    }
+
+    function moveToLink(data) {
+        window.location.hash = `/${data}`;
+    }
+</script>
+
 <!-- +Footer.svelte -->
     <div class="footer-block">
         <div class="footer-icons">
             <div class="footer-icons__img">
-                <a href="/">
-                    <img src="/assets/footer/home-select.svg" alt="home" />
+                <a href="/" >
+                    {#if urlLocation==='home'}
+                        <img src="/assets/footer/home-select.svg" alt="home" />
+                    {:else}
+                        <img src="/assets/footer/home-normal.svg" alt="home" />
+                    {/if}
                 </a>
             </div>
             <div class="footer-icons__desc">
@@ -22,7 +39,11 @@
 
         <div class="footer-icons">
             <div class="footer-icons__img">
-                <img src="/assets/footer/location-normal.svg" alt="location" />
+                {#if urlLocation==='location'}
+                    <img src="/assets/footer/location-select.svg" alt="location" />
+                {:else}
+                    <img src="/assets/footer/location-normal.svg" alt="location" />
+                {/if}
             </div>
             <div class="footer-icons__desc">
                 내 근처
@@ -31,8 +52,12 @@
 
         <div class="footer-icons" id="chatting-tap">
             <div class="footer-icons__img">
-                <a href="/public#/chat">
-                    <img src="/assets/footer/chat-normal.svg" alt="chat" />
+                <a href="/#/chat" >
+                    {#if urlLocation==='chat'}
+                        <img src="/assets/footer/chat-select.svg" alt="location" />
+                    {:else}
+                        <img src="/assets/footer/chat-normal.svg" alt="location" />
+                    {/if}
                 </a>
             </div>
             <div class="footer-icons__desc">
@@ -42,8 +67,12 @@
 
         <div class="footer-icons">
             <div class="footer-icons__img">
-                <a href="/public#/signup">
-                    <img src="/assets/footer/user-normal.svg" alt="user" />
+                <a href="/#/signup">
+                    {#if urlLocation==='user'}
+                        <img src="/assets/footer/user-select.svg" alt="location" />
+                    {:else}
+                        <img src="/assets/footer/user-normal.svg" alt="location" />
+                    {/if}
                 </a>
             </div>
             <div class="footer-icons__desc">

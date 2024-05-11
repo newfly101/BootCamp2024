@@ -18,7 +18,7 @@
         console.log(`userId:${userId}, name:${name}, email:${email}`);
     }
 
-    function writeItemsDatabase(event) {
+    function writeItemsDatabase() {
         const db = getDatabase();
         push(ref(db, 'items/' + title), {
             title:title,
@@ -60,5 +60,5 @@
     </form>
 </main>
 
-<Footer />
+<Footer urlLocation="write"/>
 

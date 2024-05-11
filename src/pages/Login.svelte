@@ -23,4 +23,4 @@
     <div id="info"></div>
 </main>
 
-<Footer />
+<Footer urlLocation="login"/>

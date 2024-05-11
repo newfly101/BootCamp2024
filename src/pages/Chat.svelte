@@ -37,7 +37,7 @@
     </div>
 </main>
 
-<Footer />
+<Footer urlLocation="chat"/>
 
 <style>
     @import '../css/chat.css';

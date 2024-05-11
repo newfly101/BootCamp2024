@@ -20,7 +20,7 @@
     <a class="write-btn" href="/#/write">+글쓰기</a>
 </main>
 
-<Footer />
+<Footer urlLocation="home"/>
 
 <style>
     /*@import '../css/reset.css';*/
