@@ -22,6 +22,9 @@
                 userStore.set(user);
                 console.log(userStore);
 
+                // localstorage에 token 저장
+                window.localStorage.setItem("token", token);
+
             }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;
