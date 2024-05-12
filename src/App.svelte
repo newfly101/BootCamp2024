@@ -10,34 +10,26 @@
   import NotFound from "./pages/NotFound.svelte";
   import Chat from "./pages/Chat.svelte";
   import { userStore } from "./Store.js";
-  import { GoogleAuthProvider } from "firebase/auth";
+  import {getAuth, GoogleAuthProvider, signInWithCredential} from "firebase/auth";
+  import {onMount} from "svelte";
 
   // const provider = new GoogleAuthProvider();
   // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
   //
   // let userLogin = false;
 
-  function handleCredentialResponse(response) {
-    // Build Firebase credential with the Google ID token.
-    const idToken = response.credential;
-    const credential = GoogleAuthProvider.credential(idToken);
+  const auth = getAuth();
+  // 토큰을 바탕으로 유저 정보를 가져오고 인증한다.
+  const checkLogin = async () => {
+    const accessToken = window.localStorage.getItem('token');
+    if (!accessToken) return;
 
-    // Sign in with credential from the Google user.
-    signInWithCredential(auth, credential).catch((error) => {
-      // Handle Errors here.
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // The email of the user's account used.
-      const email = error.email;
-      // The credential that was used.
-      const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
-    });
+    const credential = GoogleAuthProvider.credential(null, accessToken);
+
+    const result = await signInWithCredential(auth, credential);
+    const user = result.user;
+    userStore.set(user);
   }
-
-
-
-
 
   const routes = {
     '/': Main,
@@ -46,6 +38,10 @@
     '/chat': Chat,
     '*': NotFound
   }
+
+  // mount 될때 마다 check login을 하게됨
+  // 단, 새로고침할때마다 다른 페이지에 있다면 main 페이지가 보이는 문제가 있음
+  onMount(() => checkLogin())
 </script>
 
 <main>
