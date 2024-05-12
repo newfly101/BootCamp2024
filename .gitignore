@@ -23,5 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-
-firebase.js
+# 환경변수 값을 서버에 저장해서 다음에 pull 받을 때 설정하기
+.env
