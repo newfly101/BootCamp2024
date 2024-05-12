@@ -12,6 +12,7 @@
   import { userStore } from "./Store.js";
   import {getAuth, GoogleAuthProvider, signInWithCredential} from "firebase/auth";
   import {onMount} from "svelte";
+  import MyPage from "./pages/MyPage.svelte";
 
   // const provider = new GoogleAuthProvider();
   // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
@@ -39,6 +40,7 @@
     '/signup': SignUp,
     '/write': Write,
     '/chat': Chat,
+    '/my' : MyPage,
     '*': NotFound
   }
 

@@ -6,9 +6,6 @@
         window.location.hash = "/";
     }
 
-    function moveToLink(data) {
-        window.location.hash = `/${data}`;
-    }
 </script>
 
 <!-- +Footer.svelte -->
@@ -67,8 +64,8 @@
 
         <div class="footer-icons">
             <div class="footer-icons__img">
-                <a href="/#/signup">
-                    {#if urlLocation==='user'}
+                <a href="/#/my">
+                    {#if urlLocation==='my'}
                         <img src="/assets/footer/user-select.svg" alt="location" />
                     {:else}
                         <img src="/assets/footer/user-normal.svg" alt="location" />
