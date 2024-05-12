@@ -18,17 +18,20 @@
   //
   // let userLogin = false;
 
+  let isLoading = true;
+
   const auth = getAuth();
   // 토큰을 바탕으로 유저 정보를 가져오고 인증한다.
   const checkLogin = async () => {
     const accessToken = window.localStorage.getItem('token');
-    if (!accessToken) return;
+    if (!accessToken) return (isLoading = false);
 
     const credential = GoogleAuthProvider.credential(null, accessToken);
 
     const result = await signInWithCredential(auth, credential);
     const user = result.user;
     userStore.set(user);
+    isLoading = false;
   }
 
   const routes = {
@@ -45,7 +48,9 @@
 </script>
 
 <main>
-  {#if !$userStore}
+  {#if isLoading}
+    <div> 로딩중 </div>
+  {:else if !$userStore}
   <!--{#if !userLogin}-->
     <Login />
   {:else}
