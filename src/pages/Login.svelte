@@ -2,6 +2,7 @@
     import Header from "../components/Header.svelte";
     import Footer from "../components/Footer.svelte";
     import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+    import {userStore} from "../Store.js";
 
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
@@ -15,14 +16,17 @@
                 // The signed-in user info.
                 const user = result.user;
                 // IdP data available using getAdditionalUserInfo(result)
-                // ...
+                console.log(token, user);
+
+                // 밖에 있는 store에 저장
+                userStore.set(user);
+                console.log(userStore);
+
             }).catch((error) => {
             // Handle Errors here.
             const errorCode = error.code;
             const errorMessage = error.message;
-            // The email of the user's account used.
             const email = error.customData.email;
-            // The AuthCredential type that was used.
             const credential = GoogleAuthProvider.credentialFromError(error);
             // ...
         });
@@ -48,8 +52,10 @@
         </div>
     </form>
     <button on:click={loginWithGoogle}>구글 로그인</button>
-
     <div id="info"></div>
+    {#if $userStore}
+        <div>{$userStore?.displayName} 구글 로그인 완료</div>
+    {/if}
 </main>
 
 <Footer urlLocation="login"/>
