@@ -9,12 +9,13 @@
   import Write from "./pages/Write.svelte";
   import NotFound from "./pages/NotFound.svelte";
   import Chat from "./pages/Chat.svelte";
+  import { userStore } from "./Store.js";
   import { GoogleAuthProvider } from "firebase/auth";
 
-  const provider = new GoogleAuthProvider();
-  provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
-
-  let userLogin = false;
+  // const provider = new GoogleAuthProvider();
+  // provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
+  //
+  // let userLogin = false;
 
   const routes = {
     '/': Main,
@@ -26,7 +27,8 @@
 </script>
 
 <main>
-  {#if !userLogin}
+  {#if !$userStore}
+  <!--{#if !userLogin}-->
     <Login />
   {:else}
     <Router routes={routes} />

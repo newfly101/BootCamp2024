@@ -2,7 +2,7 @@
     import Header from "../components/Header.svelte";
     import Footer from "../components/Footer.svelte";
     import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-    import {userStore} from "../Store.js";
+    import { userStore } from "../Store.js";
 
     const provider = new GoogleAuthProvider();
     const auth = getAuth();
